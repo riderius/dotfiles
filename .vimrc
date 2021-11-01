@@ -13,11 +13,19 @@ set nocp
 
 set background=dark
 set termguicolors
+set t_Co=256
+set t_AB=^[[48;5;%dm
+set t_AF=^[[38;5;%dm
+
+"Russian spell check 
+map <F2> :setlocal spell spelllang=ru_yo,en_us<CR>
+map <F3> :set nospell<CR>
+
+
 
 "set mouse=a "enable mouse
 
 syntax on
-
 call plug#begin('~/.vim/plugins')
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -29,22 +37,6 @@ Plug 'ryanoasis/vim-devicons'
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols='unicode'
 
-"Plug 'scrooloose/syntastic'
-
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
-"let g:syntastic_python_checkers = ['pylint']
-"let g:syntastic_python_pylint_post_args =
-"        \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol} {msg_id}] {msg}"'
-"let g:syntastic_cpp_compiler_options = "-pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-null-sentinel -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused"
-
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -55,9 +47,11 @@ Plug 'lervag/vimtex'
 
 Plug 'mbbill/undotree'
 
-call plug#end()
+Plug 'bfrg/vim-cpp-modern'
+Plug 'ayu-theme/ayu-vim'
+Plug 'vim-airline/vim-airline-themes'
 
-"let g:vimtex_compiler_progname = 'nvr'
+call plug#end()
 
 map  <C-n> :NERDTreeToggle<CR>
 
@@ -85,14 +79,21 @@ set guicursor=
 " turn off search highlight
 nnoremap ,<space> :nohlsearch<CR>
 
-"ctrl + s
-map <C-s> :w<CR>
 "colors themes
 let g:colors_name=""
 "let g:colors_name="borland"
+let ayucolor="dark"
+colorscheme ayu
+let g:airline_theme='ayu_dark'
 
 "undotree
 nnoremap <F5> :UndotreeToggle<CR>
+
+" Enable highlighting of C++11 attributes
+let g:cpp_attributes_highlight = 1
+
+" Highlight struct/class member variables (affects both C and C++ files)
+let g:cpp_member_highlight = 1
 
 lua << EOF
 -- Set completeopt to have a better completion experience
