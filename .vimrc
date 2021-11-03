@@ -10,6 +10,7 @@ set write
 set encoding=utf-8
 set fileencoding=utf-8
 set nocp
+set undofile
 
 set background=dark
 set termguicolors
@@ -17,11 +18,9 @@ set t_Co=256
 set t_AB=^[[48;5;%dm
 set t_AF=^[[38;5;%dm
 
-"Russian spell check 
+"Russian spell check
 map <F2> :setlocal spell spelllang=ru_yo,en_us<CR>
 map <F3> :set nospell<CR>
-
-
 
 "set mouse=a "enable mouse
 
@@ -30,33 +29,34 @@ call plug#begin('~/.vim/plugins')
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'jiangmiao/auto-pairs'
+Plug 'mbbill/undotree'
+Plug 'ellisonleao/glow.nvim'
+Plug 'sindrets/diffview.nvim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
-
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols='unicode'
+Plug 'bfrg/vim-cpp-modern'
+Plug 'ayu-theme/ayu-vim'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
-
 Plug 'lervag/vimtex'
 
-Plug 'mbbill/undotree'
-
-Plug 'bfrg/vim-cpp-modern'
-Plug 'ayu-theme/ayu-vim'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'Chiel92/vim-autoformat'
+Plug 'yggdroot/indentline'
+Plug 'RIDERIUS/vim-cpplint'
+autocmd FileType cpp nmap <buffer> <C-e> :call Cpplint()<CR>
 
 call plug#end()
 
 map  <C-n> :NERDTreeToggle<CR>
-
-"map <C-d> :lclose<CR>
-"map <C-e> :Errors<CR>
 
 " off up down left right
 "noremap <Up> <nop>
@@ -91,9 +91,14 @@ nnoremap <F5> :UndotreeToggle<CR>
 
 " Enable highlighting of C++11 attributes
 let g:cpp_attributes_highlight = 1
-
 " Highlight struct/class member variables (affects both C and C++ files)
 let g:cpp_member_highlight = 1
+let g:indentLine_char_list = ['|']
+map <F4> :Autoformat<CR>
+let g:formatters_python = ['autopep8']
+let g:formatters_cpp = ['clangformat']
+let g:formatdef_my_clangformat = '"-style=Google"'
+let g:cpplint_cmd_options = '"--counting=detailed"'
 
 lua << EOF
 -- Set completeopt to have a better completion experience
