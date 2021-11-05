@@ -1,3 +1,29 @@
+"This is free and unencumbered software released into the public domain.
+"
+"Anyone is free to copy, modify, publish, use, compile, sell, or
+"distribute this software, either in source code form or as a compiled
+"binary, for any purpose, commercial or non-commercial, and by any
+"means.
+
+"In jurisdictions that recognize copyright laws, the author or authors
+"of this software dedicate any and all copyright interest in the
+"software to the public domain. We make this dedication for the benefit
+"of the public at large and to the detriment of our heirs and
+"successors. We intend this dedication to be an overt act of
+"relinquishment in perpetuity of all present and future rights to this
+"software under copyright law.
+
+"THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+"EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+"MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+"IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+"OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+"ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+"OTHER DEALINGS IN THE SOFTWARE.
+"
+"For more information, please refer to <https://unlicense.org>
+"
+
 set number
 set tabstop=4
 set shiftwidth=4
@@ -18,21 +44,25 @@ set t_Co=256
 set t_AB=^[[48;5;%dm
 set t_AF=^[[38;5;%dm
 
-"Russian spell check
+" Russian lang for vim
 map <F2> :setlocal spell spelllang=ru_yo,en_us<CR>
 map <F3> :set nospell<CR>
 
-"set mouse=a "enable mouse
-
 syntax on
-call plug#begin('~/.vim/plugins')
+call plug#begin('~/.config/nvim/plugins')
 
+" functional plugins
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'ellisonleao/glow.nvim'
+let g:glow_border = "rounded"
 Plug 'sindrets/diffview.nvim'
+Plug 'mhinz/vim-startify'
+let g:startify_bookmarks = ['~/.config/nvim/init.vim', '~/.bashrc']
+let g:startify_custom_header = ""
 
+" Graphic plugins
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 let g:airline_powerline_fonts = 1
@@ -41,7 +71,9 @@ Plug 'bfrg/vim-cpp-modern'
 Plug 'ayu-theme/ayu-vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'powerman/vim-plugin-ruscmd'
 
+" lsp plugins
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -49,9 +81,11 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'lervag/vimtex'
 
+" formats plugins
 Plug 'Chiel92/vim-autoformat'
 Plug 'yggdroot/indentline'
 Plug 'RIDERIUS/vim-cpplint'
+Plug 'numToStr/Comment.nvim'
 autocmd FileType cpp nmap <buffer> <C-e> :call Cpplint()<CR>
 
 call plug#end()
@@ -69,7 +103,7 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-imap jk <Esc>
+imap jj <Esc>
 
 set colorcolumn=79
 
@@ -80,8 +114,6 @@ set guicursor=
 nnoremap ,<space> :nohlsearch<CR>
 
 "colors themes
-let g:colors_name=""
-"let g:colors_name="borland"
 let ayucolor="dark"
 colorscheme ayu
 let g:airline_theme='ayu_dark'
@@ -155,7 +187,6 @@ cmp.setup {
 }
 EOF
 
-
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
@@ -212,6 +243,7 @@ nvim_lsp.ccls.setup {
     };
   }
 }
+
 EOF
 
 " Delete buffer while keeping window layout (don't close buffer's windows).
@@ -287,69 +319,12 @@ endfunction
 command! -bang -complete=buffer -nargs=? Bclose call <SID>Bclose(<q-bang>, <q-args>)
 nnoremap <silent> <Leader>bd :Bclose<CR>
 
-
 map gn :bn<cr>
 map gp :bp<cr>
 map gw :Bclose<cr>
 
-" Next lines for color theme as borland
-" Vim color file
-" Maintainer:   Yegappan Lakshmanan
-" Last Change:  2001 Sep 9
-
-" Color settings similar to that used in Borland IDE's.
-
-if g:colors_name=="borland"
-    set background=dark
-    hi clear
-    if exists("syntax_on")
-        syntax reset
-    endif
-
-    hi Normal       term=NONE cterm=NONE ctermfg=Yellow ctermbg=DarkBlue
-    hi Normal       gui=NONE guifg=Yellow guibg=DarkBlue
-    hi NonText      term=NONE cterm=NONE ctermfg=White ctermbg=DarkBlue
-    hi NonText      gui=NONE guifg=White guibg=DarkBlue
-
-    hi Statement    term=NONE cterm=NONE ctermfg=White  ctermbg=DarkBlue
-    hi Statement    gui=NONE guifg=White guibg=DarkBlue
-    hi Special      term=NONE cterm=NONE ctermfg=Cyan ctermbg=DarkBlue
-    hi Special      gui=NONE guifg=Cyan guibg=DarkBlue
-    hi Constant     term=NONE cterm=NONE ctermfg=Magenta ctermbg=DarkBlue
-    hi Constant     gui=NONE guifg=Magenta guibg=DarkBlue
-    hi Comment      term=NONE cterm=NONE ctermfg=Gray ctermbg=DarkBlue
-    hi Comment      gui=NONE guifg=Gray guibg=DarkBlue
-    hi Preproc      term=NONE cterm=NONE ctermfg=Green ctermbg=DarkBlue
-    hi Preproc      gui=NONE guifg=Green guibg=DarkBlue
-    hi Type         term=NONE cterm=NONE ctermfg=White ctermbg=DarkBlue
-    hi Type         gui=NONE guifg=White guibg=DarkBlue
-    hi Identifier   term=NONE cterm=NONE ctermfg=White ctermbg=DarkBlue
-    hi Identifier   gui=NONE guifg=White guibg=DarkBlue
-
-    hi StatusLine   term=bold cterm=bold ctermfg=Black ctermbg=White
-    hi StatusLine   gui=bold guifg=Black guibg=White
-
-    hi StatusLineNC term=NONE cterm=NONE ctermfg=Black ctermbg=White
-    hi StatusLineNC gui=NONE guifg=Black guibg=White
-
-    hi Visual       term=NONE cterm=NONE ctermfg=Black ctermbg=DarkCyan
-    hi Visual       gui=NONE guifg=Black guibg=DarkCyan
-
-    hi Search       term=NONE cterm=NONE ctermbg=Gray
-    hi Search       gui=NONE guibg=Gray
-
-    hi VertSplit    term=NONE cterm=NONE ctermfg=Black ctermbg=White
-    hi VertSplit    gui=NONE guifg=Black guibg=White
-
-    hi Directory    term=NONE cterm=NONE ctermfg=Green ctermbg=DarkBlue
-    hi Directory    gui=NONE guifg=Green guibg=DarkBlue
-
-    hi WarningMsg   term=standout cterm=NONE ctermfg=Red ctermbg=DarkBlue
-    hi WarningMsg   gui=standout guifg=Red guibg=DarkBlue
-
-    hi Error        term=NONE cterm=NONE ctermfg=White ctermbg=Red
-    hi Error        gui=NONE guifg=White guibg=Red
-
-    hi Cursor       ctermfg=Black ctermbg=Yellow
-    hi Cursor       guifg=Black guibg=Yellow
-endif
+" numToStr/Comment.nvim
+lua << EOF
+require('Comment').setup()
+require('Comment').get_config()
+EOF
