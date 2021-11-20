@@ -44,7 +44,7 @@ set t_Co=256
 set t_AB=^[[48;5;%dm
 set t_AF=^[[38;5;%dm
 
-" Russian lang for vim
+" Russian spell check
 map <F2> :setlocal spell spelllang=ru_yo,en_us<CR>
 map <F3> :set nospell<CR>
 
@@ -57,6 +57,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'ellisonleao/glow.nvim'
 let g:glow_border = "rounded"
+Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'mhinz/vim-startify'
 let g:startify_bookmarks = ['~/.config/nvim/init.vim', '~/.bashrc']
@@ -68,8 +69,8 @@ Plug 'ryanoasis/vim-devicons'
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols='unicode'
 Plug 'bfrg/vim-cpp-modern'
-Plug 'ayu-theme/ayu-vim'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'ayu-theme/ayu-vim'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'powerman/vim-plugin-ruscmd'
 
@@ -80,13 +81,28 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'lervag/vimtex'
+    let g:vimtex_syntax_conceal = {
+          \ 'accents': 0,
+          \ 'cites': 0,
+          \ 'fancy': 0,
+          \ 'greek': 0,
+          \ 'math_bounds': 0,
+          \ 'math_delimiters': 0,
+          \ 'math_fracs': 0,
+          \ 'math_super_sub': 0,
+          \ 'math_symbols': 0,
+          \ 'sections': 0,
+          \ 'styles': 0,
+          \}
 
 " formats plugins
 Plug 'Chiel92/vim-autoformat'
 Plug 'yggdroot/indentline'
 Plug 'RIDERIUS/vim-cpplint'
-Plug 'numToStr/Comment.nvim'
 autocmd FileType cpp nmap <buffer> <C-e> :call Cpplint()<CR>
+Plug 'numToStr/Comment.nvim'
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
 call plug#end()
 
@@ -114,9 +130,9 @@ set guicursor=
 nnoremap ,<space> :nohlsearch<CR>
 
 "colors themes
-let ayucolor="dark"
-colorscheme ayu
-let g:airline_theme='ayu_dark'
+"let ayucolor="dark"
+"colorscheme ayu
+"let g:airline_theme='ayu_dark'
 
 "undotree
 nnoremap <F5> :UndotreeToggle<CR>
@@ -226,7 +242,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'ccls', 'pylsp', 'texlab' }
+local servers = { 'clangd', 'pylsp', 'texlab', 'cmake' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -235,14 +251,6 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
-
-nvim_lsp.ccls.setup {
-  init_options = {
-    cache = {
-      directory = "/tmp/.ccls-cache";
-    };
-  }
-}
 
 EOF
 
