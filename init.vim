@@ -25,6 +25,7 @@
 "
 
 set number
+set relativenumber
 set tabstop=4
 set shiftwidth=4
 set smarttab
@@ -53,15 +54,35 @@ call plug#begin('~/.config/nvim/plugins')
 
 " functional plugins
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'ellisonleao/glow.nvim'
 let g:glow_border = "rounded"
 Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'mhinz/vim-startify'
-let g:startify_bookmarks = ['~/.config/nvim/init.vim', '~/.bashrc']
+let g:startify_bookmarks = ['~/.config/nvim/init.vim']
 let g:startify_custom_header = ""
+Plug 'andweeb/presence.nvim'
+" General options
+let g:presence_auto_update         = 1
+let g:presence_neovim_image_text   = "My favorite IDE"
+let g:presence_main_image          = "neovim"
+let g:presence_client_id           = "793271441293967371"
+let g:presence_log_level           = "error"
+let g:presence_debounce_timeout    = 10
+let g:presence_enable_line_number  = 0
+let g:presence_blacklist           = []
+let g:presence_buttons             = 1
+
+" Rich Presence text options
+let g:presence_editing_text        = "Editing %s"
+let g:presence_file_explorer_text  = "Browsing %s"
+let g:presence_git_commit_text     = "Committing changes"
+let g:presence_plugin_manager_text = "Managing plugins"
+let g:presence_reading_text        = "Reading %s"
+let g:presence_workspace_text      = "Working on %s"
+let g:presence_line_number_text    = "Line %s out of %s"
+
 
 " Graphic plugins
 Plug 'vim-airline/vim-airline'
@@ -69,19 +90,21 @@ Plug 'ryanoasis/vim-devicons'
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols='unicode'
 Plug 'bfrg/vim-cpp-modern'
-"Plug 'ayu-theme/ayu-vim'
-"Plug 'vim-airline/vim-airline-themes'
+Plug 'ayu-theme/ayu-vim'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'powerman/vim-plugin-ruscmd'
 
 " lsp plugins
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'windwp/nvim-autopairs'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'lervag/vimtex'
-    let g:vimtex_syntax_conceal = {
+let g:tex_flavor='latex'
+let g:vimtex_syntax_conceal = {
           \ 'accents': 0,
           \ 'cites': 0,
           \ 'fancy': 0,
@@ -94,6 +117,7 @@ Plug 'lervag/vimtex'
           \ 'sections': 0,
           \ 'styles': 0,
           \}
+let g:vimtex_quickfix_mode=0
 
 " formats plugins
 Plug 'Chiel92/vim-autoformat'
@@ -121,18 +145,18 @@ nnoremap <Down> :echoe "Use j"<CR>
 
 imap jj <Esc>
 
-set colorcolumn=79
+set colorcolumn=120
 
 "for fix bug about cursor in nvim
-set guicursor=
+"set guicursor=
 
 " turn off search highlight
 nnoremap ,<space> :nohlsearch<CR>
 
 "colors themes
-"let ayucolor="dark"
-"colorscheme ayu
-"let g:airline_theme='ayu_dark'
+let ayucolor="dark"
+colorscheme ayu
+let g:airline_theme='ayu_dark'
 
 "undotree
 nnoremap <F5> :UndotreeToggle<CR>
@@ -149,6 +173,19 @@ let g:formatdef_my_clangformat = '"-style=Google"'
 let g:cpplint_cmd_options = '"--counting=detailed"'
 
 lua << EOF
+require('nvim-autopairs').setup{}
+local disable_filetype = { "TelescopePrompt" }
+local disable_in_macro = false  -- disable when recording or executing a macro
+local disable_in_visualblock = false -- disable when insert after visual block mode
+local ignored_next_char = string.gsub([[ [%w%%%'%[%"%.] ]],"%s+", "")
+local enable_moveright = true
+local enable_afterquote = true  -- add bracket pairs after quote
+local enable_check_bracket_line = true  --- check bracket in same line
+local check_ts = false
+local map_bs = true  -- map the <BS> key
+local map_c_h = false  -- Map the <C-h> key to delete a pair
+local map_c_w = false -- map <c-w> to delete a pair if possible
+
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
@@ -156,6 +193,7 @@ vim.o.completeopt = 'menuone,noselect'
 local luasnip = require 'luasnip'
 
 -- nvim-cmp setup
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require 'cmp'
 cmp.setup {
   completion = {
@@ -201,6 +239,9 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+
 EOF
 
 lua << EOF
@@ -251,6 +292,10 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+require'lspconfig'.clangd.setup{
+    cmd = {"clangd", "--completion-style=detailed"},
+}
 
 EOF
 
@@ -334,5 +379,7 @@ map gw :Bclose<cr>
 " numToStr/Comment.nvim
 lua << EOF
 require('Comment').setup()
-require('Comment').get_config()
 EOF
+packadd termdebug
+let g:termdebug_wide=1
+tnoremap <Esc> <C-\><C-n>
