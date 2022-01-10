@@ -1,0 +1,43 @@
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[user]
+	name = RIDERIUS
+	email = riderius.help@gmail.com
+	signingkey = 85523FCB002DAF83
+[core]
+	quotepath = false
+[gui]
+	encoding = utf-8
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = "main"
+[alias]
+	ci = commit
+	s = status
+    lll = log --oneline
+    l = log --pretty=fuller --stat --graph
+    ll = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short --graph 
+	dev = checkout dev
+	main = checkout main
+	master = checkout master
+	develop = checkout develop
+	c = checkout
+	new = checkout -b
+	b = branch
+	d = diff
+	patch = format-patch
+	p = push
+	pt = push --tags
+	pf = push --force
+	ptf = push --tags --force
+	pp = pull
+	ppt = pull --tags
+	pptf = pull --tags --force
+	ppf = pull --force
+	a = add *
