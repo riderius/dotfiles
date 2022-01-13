@@ -32,14 +32,14 @@
 	b = branch
 	d = diff
 	patch = format-patch
-	p = push
-	pt = push --tags
-	pf = push --force
-	ptf = push --tags --force
-	pp = pull
-	ppt = pull --tags
-	pptf = pull --tags --force
-	ppf = pull --force
+	p = push --verbose
+	pt = push --tags --verbose
+	pf = push --force --verbose
+	ptf = push --tags --force --verbose
+	pp = pull --verbose
+	ppt = pull --tags --verbose
+	pptf = pull --tags --force --verbose
+	ppf = pull --force --verbose
 	a = add *
 [credential]
 	helper = cache
