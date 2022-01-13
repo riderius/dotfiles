@@ -41,3 +41,5 @@
 	pptf = pull --tags --force
 	ppf = pull --force
 	a = add *
+[credential]
+	helper = cache
