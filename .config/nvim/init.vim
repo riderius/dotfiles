@@ -128,6 +128,8 @@ autocmd FileType cpp nmap <buffer> <C-e> :call Cpplint()<CR>
 Plug 'numToStr/Comment.nvim'
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+Plug 'preservim/tagbar'
+nmap <F6> :TagbarToggle<CR>
 
 call plug#end()
 
