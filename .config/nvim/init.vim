@@ -287,6 +287,9 @@ local map_c_w = false -- map <c-w> to delete a pair if possible
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
+  completion = {
+    autocomplete = false
+  },
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
