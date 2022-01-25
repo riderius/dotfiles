@@ -9,6 +9,7 @@
 	signingkey = 85523FCB002DAF83
 [core]
 	quotepath = false
+	hooksPath = /home/riderius/.config/gitfiles/hooks
 [gui]
 	encoding = utf-8
 [gpg]
