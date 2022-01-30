@@ -73,6 +73,14 @@
 
 (require 'evil)
 (evil-mode 1)
+(setq evil-emacs-state-modes nil)
+(setq evil-insert-state-modes nil)
+(setq evil-motion-state-modes nil)
+(setq evil-mode-line-format nil
+      evil-insert-state-cursor '(bar "White")
+      evil-visual-state-cursor '(box "#F86155"))
+(setq evil-undo-system t)
+
 
 (require 'auto-complete)
 (ac-config-default)
