@@ -81,3 +81,6 @@
 ;color theme https://github.com/bkruczyk/badwolf-emacs
 (load-theme 'badwolf t)
 
+;;Discord presense
+(require 'elcord)
+(elcord-mode)
