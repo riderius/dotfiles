@@ -70,7 +70,7 @@
  nil
  ("-d" "en")
  nil utf8)
-("russian"                       ; Russian
+("ru-yo"                       ; Russian
     "[АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюя]"
  "[^АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюя]"
  "[-]"
@@ -85,7 +85,7 @@
  ("-C")
  nil utf8))
 
-ispell-russian-dictionary "russian"
+ispell-russian-dictionary "ru-yo"
 ispell-english-dictionary "english"
 flyspell-default-dictionary ispell-russian-dictionary
 ispell-dictionary ispell-english-dictionary
@@ -149,6 +149,13 @@ ispell-extra-args '("--sug-mode=ultra"))
 (add-to-list 'package-archives
              (cons "nongnu" (format "http%s://elpa.nongnu.org/nongnu/"
                                     (if (gnutls-available-p) "s" ""))))
+
+(setq package-selected-packages '(evil auto-complete irony badwolf-theme elcord telephone-line magit flyspell))
+
+(when (cl-find-if-not #'package-installed-p package-selected-packages)
+  (package-refresh-contents)
+  (mapc #'package-install package-selected-packages))
+
 
 (require 'evil)
 (evil-mode 1)
