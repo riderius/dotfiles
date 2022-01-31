@@ -172,3 +172,17 @@ ispell-extra-args '("--sug-mode=ultra"))
 (require 'elcord)
 (elcord-mode)
 
+;; Change Powerline
+(require 'telephone-line)
+(telephone-line-mode 1)
+(setq telephone-line-lhs
+      '((evil   . (telephone-line-evil-tag-segment))
+        (accent . (telephone-line-vc-segment
+                   telephone-line-erc-modified-channels-segment
+                   telephone-line-process-segment))
+        (nil    . (telephone-line-minor-mode-segment
+                   telephone-line-buffer-segment))))
+(setq telephone-line-rhs
+      '((nil    . (telephone-line-misc-info-segment))
+        (accent . (telephone-line-major-mode-segment))
+        (evil   . (telephone-line-airline-position-segment))))
