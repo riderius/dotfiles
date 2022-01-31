@@ -34,11 +34,6 @@
 (setq auto-save-default        nil)
 (setq auto-save-list-file-name nil)
 
-;; Display file size/time in mode-line
-(setq display-time-24hr-format t)
-(display-time-mode             t)
-(size-indication-mode          t)
-
 ;; IDO plugin
 (require 'ido)
 (ido-mode                      t)
