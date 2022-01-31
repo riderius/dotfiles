@@ -186,3 +186,5 @@ ispell-extra-args '("--sug-mode=ultra"))
       '((nil    . (telephone-line-misc-info-segment))
         (accent . (telephone-line-major-mode-segment))
         (evil   . (telephone-line-airline-position-segment))))
+
+(require 'git-commit)
