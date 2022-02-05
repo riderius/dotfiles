@@ -44,3 +44,8 @@
 	a = add *
 [credential]
 	helper = cache
+[sendemail]
+    smtpserver = smtp.gmail.com
+    smtpuser = riderius.help@gmail.com
+    smtpencryption = tls
+    smtpserverport = 587
