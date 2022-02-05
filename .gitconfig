@@ -19,7 +19,7 @@
 [init]
 	defaultBranch = "main"
 [alias]
-	ci = commit
+	ci = commit -s
 	s = status
     lll = log --oneline
     l = log --pretty=fuller --stat --graph
