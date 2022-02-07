@@ -1,3 +1,6 @@
+;; Include plugins from ~/.emacs.d/lisp
+(add-to-list 'load-path "~/.emacs.d/lisp")
+
 ;; Inhibit startup/splash screen (setq inhibit-splash-screen   t)
 (setq inhibit-splash-screen   t)
 (setq ingibit-startup-message t) ;; welcome screen C-h C-a
@@ -150,7 +153,7 @@ ispell-extra-args '("--sug-mode=ultra"))
              (cons "nongnu" (format "http%s://elpa.nongnu.org/nongnu/"
                                     (if (gnutls-available-p) "s" ""))))
 
-(setq package-selected-packages '(evil auto-complete irony badwolf-theme elcord telephone-line magit flyspell))
+(setq package-selected-packages '(evil auto-complete irony badwolf-theme elcord telephone-line magit flyspell eglot))
 
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
@@ -166,7 +169,6 @@ ispell-extra-args '("--sug-mode=ultra"))
       evil-insert-state-cursor '(bar "White")
       evil-visual-state-cursor '(box "#F86155"))
 (setq evil-undo-system t)
-
 
 (require 'auto-complete)
 (ac-config-default)
@@ -206,3 +208,4 @@ ispell-extra-args '("--sug-mode=ultra"))
 (add-hook 'python-mode-hook 'eglot-ensure)
 (add-hook 'texlab-mode-hook 'eglot-ensure)
 (add-hook 'cmake-mode-hook 'eglot-ensure)
+
