@@ -4,6 +4,7 @@
 ;; Inhibit startup/splash screen (setq inhibit-splash-screen   t)
 (setq inhibit-splash-screen   t)
 (setq ingibit-startup-message t) ;; welcome screen C-h C-a
+(setq initial-scratch-message nil)
 
 ;; Disable GUI components
 (tooltip-mode      -1)
