@@ -154,7 +154,8 @@ ispell-extra-args '("--sug-mode=ultra"))
              (cons "nongnu" (format "http%s://elpa.nongnu.org/nongnu/"
                                     (if (gnutls-available-p) "s" ""))))
 
-(setq package-selected-packages '(evil auto-complete irony badwolf-theme elcord telephone-line magit flyspell eglot))
+(setq package-selected-packages '(evil auto-complete irony badwolf-theme elcord telephone-line magit flyspell
+                                  eglot auctex))
 
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
@@ -202,11 +203,21 @@ ispell-extra-args '("--sug-mode=ultra"))
 (require 'eglot)
 (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd" "--completion-style=detailed"))
 (add-to-list 'eglot-server-programs '((python-mode) "pylsp"))
-(add-to-list 'eglot-server-programs '((latex-mode) "texlab"))
 (add-to-list 'eglot-server-programs '((cmake-mode) "cmake-language-server"))
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'python-mode-hook 'eglot-ensure)
-(add-hook 'texlab-mode-hook 'eglot-ensure)
 (add-hook 'cmake-mode-hook 'eglot-ensure)
 
+(require 'tex-site)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+
+(add-hook 'LaTeX-mode-hook 'visual-line-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+(setq TeX-PDF-mode t)
