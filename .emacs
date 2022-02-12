@@ -1,6 +1,3 @@
-;; Include plugins from ~/.emacs.d/lisp
-(add-to-list 'load-path "~/.emacs.d/lisp")
-
 ;; Inhibit startup/splash screen (setq inhibit-splash-screen   t)
 (setq inhibit-splash-screen   t)
 (setq ingibit-startup-message t) ;; welcome screen C-h C-a
@@ -154,8 +151,9 @@ ispell-extra-args '("--sug-mode=ultra"))
              (cons "nongnu" (format "http%s://elpa.nongnu.org/nongnu/"
                                     (if (gnutls-available-p) "s" ""))))
 
-(setq package-selected-packages '(evil auto-complete irony badwolf-theme elcord telephone-line magit flyspell
-                                  eglot auctex))
+(setq package-selected-packages '(evil badwolf-theme elcord telephone-line magit flyspell auctex lsp-mode yasnippet
+                                  lsp-treemacs projectile hydra flycheck company avy which-key dap-mode lsp-ui
+                                  all-the-icons))
 
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
@@ -171,10 +169,6 @@ ispell-extra-args '("--sug-mode=ultra"))
       evil-insert-state-cursor '(bar "White")
       evil-visual-state-cursor '(box "#F86155"))
 (setq evil-undo-system t)
-
-(require 'auto-complete)
-(ac-config-default)
-(add-hook 'c++-mode-hook 'irony-mode)
 
 ;color theme https://github.com/bkruczyk/badwolf-emacs
 (load-theme 'badwolf t)
@@ -200,24 +194,40 @@ ispell-extra-args '("--sug-mode=ultra"))
 
 (require 'git-commit)
 
-(require 'eglot)
-(add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd" "--completion-style=detailed"))
-(add-to-list 'eglot-server-programs '((python-mode) "pylsp"))
-(add-to-list 'eglot-server-programs '((cmake-mode) "cmake-language-server"))
-(add-hook 'c-mode-hook 'eglot-ensure)
-(add-hook 'c++-mode-hook 'eglot-ensure)
-(add-hook 'python-mode-hook 'eglot-ensure)
-(add-hook 'cmake-mode-hook 'eglot-ensure)
+;(require 'tex-site)
+;(setq TeX-auto-save t)
+;(setq TeX-parse-self t)
+;(setq-default TeX-master nil)
 
-(require 'tex-site)
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq-default TeX-master nil)
+;(add-hook 'LaTeX-mode-hook 'visual-line-mode)
+;(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+;(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 
-(add-hook 'LaTeX-mode-hook 'visual-line-mode)
-(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+;(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+;(setq reftex-plug-into-AUCTeX t)
+;(setq TeX-PDF-mode t)
 
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(setq reftex-plug-into-AUCTeX t)
-(setq TeX-PDF-mode t)
+(which-key-mode)
+(add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
+(add-hook 'python-mode-hook 'lsp)
+(with-eval-after-load "tex-mode"
+ (add-hook 'tex-mode-hook 'lsp)
+ (add-hook 'latex-mode-hook 'lsp))
+
+(setq gc-cons-threshold (* 100 1024 1024)
+      read-process-output-max (* 1024 1024)
+      treemacs-space-between-root-nodes nil
+      company-idle-delay 0.0
+      company-minimum-prefix-length 1
+      lsp-idle-delay 0.1)  ;; clangd is fast
+
+(with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+  (require 'dap-cpptools)
+  (yas-global-mode))
+(setq lsp-enable-symbol-highlighting nil)
+(setq lsp-headerline-breadcrumb-enable nil)
+(setq lsp-c++-custom-server-command '("bash" "--counting=detailed" "/usr/bin/clangd"))
+
+(require 'all-the-icons)
