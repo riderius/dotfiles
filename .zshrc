@@ -131,5 +131,3 @@ alias emacs="emacs -nw"
 
 # Vars
 export EDITOR="emacs -nw"
-
-eval "$(mcfly init zsh)"
