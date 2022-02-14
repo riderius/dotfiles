@@ -151,7 +151,7 @@ ispell-extra-args '("--sug-mode=ultra"))
              (cons "nongnu" (format "http%s://elpa.nongnu.org/nongnu/"
                                     (if (gnutls-available-p) "s" ""))))
 
-(setq package-selected-packages '(evil badwolf-theme elcord telephone-line magit flyspell auctex lsp-mode yasnippet
+(setq package-selected-packages '(evil badwolf-theme elcord telephone-line magit flyspell lsp-mode yasnippet
                                   lsp-treemacs projectile hydra flycheck company avy which-key dap-mode lsp-ui
                                   all-the-icons))
 
@@ -194,26 +194,11 @@ ispell-extra-args '("--sug-mode=ultra"))
 
 (require 'git-commit)
 
-;(require 'tex-site)
-;(setq TeX-auto-save t)
-;(setq TeX-parse-self t)
-;(setq-default TeX-master nil)
-
-;(add-hook 'LaTeX-mode-hook 'visual-line-mode)
-;(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-;(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-
-;(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-;(setq reftex-plug-into-AUCTeX t)
-;(setq TeX-PDF-mode t)
-
 (which-key-mode)
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
 (add-hook 'python-mode-hook 'lsp)
-(with-eval-after-load "tex-mode"
- (add-hook 'tex-mode-hook 'lsp)
- (add-hook 'latex-mode-hook 'lsp))
+(add-hook 'latex-mode-hook 'lsp)
 
 (setq gc-cons-threshold (* 100 1024 1024)
       read-process-output-max (* 1024 1024)
