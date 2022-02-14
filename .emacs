@@ -176,6 +176,7 @@ ispell-extra-args '("--sug-mode=ultra"))
 ;;Discord presense
 (require 'elcord)
 (elcord-mode)
+(setq elcord-quiet t)
 
 ;; Change Powerline
 (require 'telephone-line)
