@@ -118,7 +118,6 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=20000
 SAVEHIST=20000
-bindkey -v
 # End of lines configured by zsh-newuser-install
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -132,6 +131,18 @@ alias emacs="emacs -nw"
 
 # Vars
 export EDITOR="emacs -nw"
+
+# pip zsh completion start
+function _pip_completion {
+  local words cword
+  read -Ac words
+  read -cn cword
+  reply=( $( COMP_WORDS="$words[*]" \
+             COMP_CWORD=$(( cword-1 )) \
+             PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
+}
+compctl -K _pip_completion pip
+# pip zsh completion end
 
 # From https://github.com/alexpaniman/dotfiles/blob/master/.zshrc
 run-cpp() {
