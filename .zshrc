@@ -128,6 +128,7 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 
 # Aliases
 alias emacs="emacs -nw"
+alias C="LC_ALL=C"
 
 # Vars
 export EDITOR="emacs -nw"
