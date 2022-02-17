@@ -125,6 +125,8 @@ SAVEHIST=20000
 
 # Command not found
 source /usr/share/doc/pkgfile/command-not-found.zsh
+# https://github.com/zsh-users/zsh-autosuggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Aliases
 alias emacs="emacs -nw"
