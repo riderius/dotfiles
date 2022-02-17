@@ -1,4 +1,6 @@
-;; Inhibit startup/splash screen (setq inhibit-splash-screen   t)
+;Include plugins from ~/.emacs.d/lisp
+(add-to-list 'load-path "~/.emacs.d/lisp")
+;; Inhibit startup/splash screen
 (setq inhibit-splash-screen   t)
 (setq ingibit-startup-message t) ;; welcome screen C-h C-a
 (setq initial-scratch-message nil)
@@ -153,7 +155,7 @@ ispell-extra-args '("--sug-mode=ultra"))
 
 (setq package-selected-packages '(evil badwolf-theme elcord telephone-line magit flyspell lsp-mode yasnippet
                                   lsp-treemacs projectile hydra flycheck company avy which-key dap-mode lsp-ui
-                                  all-the-icons))
+                                  all-the-icons cmake-mode evil-commentary))
 
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
@@ -200,6 +202,7 @@ ispell-extra-args '("--sug-mode=ultra"))
 (add-hook 'c++-mode-hook 'lsp)
 (add-hook 'python-mode-hook 'lsp)
 (add-hook 'latex-mode-hook 'lsp)
+(add-hook 'cmake-mode-hook 'lsp)
 
 (setq gc-cons-threshold (* 100 1024 1024)
       read-process-output-max (* 1024 1024)
@@ -217,3 +220,6 @@ ispell-extra-args '("--sug-mode=ultra"))
 (setq lsp-c++-custom-server-command '("bash" "--counting=detailed" "/usr/bin/clangd"))
 
 (require 'all-the-icons)
+(require 'cmake-mode)
+(require 'evil-commentary)
+(evil-commentary-mode)
