@@ -1,4 +1,5 @@
-;Include plugins from ~/.emacs.d/lisp
+
+                                        ;Include plugins from ~/.emacs.d/lisp
 (add-to-list 'load-path "~/.emacs.d/lisp")
 ;; Inhibit startup/splash screen
 (setq inhibit-splash-screen   t)
@@ -155,21 +156,29 @@ ispell-extra-args '("--sug-mode=ultra"))
 
 (setq package-selected-packages '(evil badwolf-theme elcord telephone-line magit flyspell lsp-mode yasnippet
                                   lsp-treemacs projectile hydra flycheck company avy which-key dap-mode lsp-ui
-                                  all-the-icons cmake-mode evil-commentary undo-tree))
+                                  all-the-icons cmake-mode evil-commentary undo-tree evil-terminal-cursor-changer))
 
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
   (mapc #'package-install package-selected-packages))
+
+(unless (display-graphic-p)
+      (require 'evil-terminal-cursor-changer)
+      (evil-terminal-cursor-changer-activate) ; or (etcc-on)
+      )
 
 (require 'evil)
 (evil-mode 1)
 (setq evil-emacs-state-modes nil)
 (setq evil-insert-state-modes nil)
 (setq evil-motion-state-modes nil)
-(setq evil-mode-line-format nil
-      evil-insert-state-cursor '(bar "White")
-      evil-visual-state-cursor '(box "#F86155"))
 (setq evil-undo-system t)
+(setq evil-motion-state-cursor 'box)  ; █
+(setq evil-visual-state-cursor 'box)  ; █
+(setq evil-normal-state-cursor 'box)  ; █
+(setq evil-insert-state-cursor 'bar)  ; ⎸
+(setq evil-emacs-state-cursor  'hbar) ; _
+
 
 ;color theme https://github.com/bkruczyk/badwolf-emacs
 (load-theme 'badwolf t)
