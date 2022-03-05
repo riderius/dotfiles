@@ -1,5 +1,4 @@
-
-                                        ;Include plugins from ~/.emacs.d/lisp
+;  Include plugins from ~/.emacs.d/lisp
 (add-to-list 'load-path "~/.emacs.d/lisp")
 ;; Inhibit startup/splash screen
 (setq inhibit-splash-screen   t)
