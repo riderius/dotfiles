@@ -182,3 +182,11 @@ run-cpp() {
 
     rm output.out
 }
+
+pidof  ssh-agent >/dev/null
+if [[ $? -ne 0 ]] ; then
+    eval "$(ssh-agent -s)" >/dev/null
+else
+    killall ssh-agent
+    eval "$(ssh-agent -s)" >/dev/null
+fi
