@@ -131,7 +131,6 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Aliases
 alias emacs="emacs -nw"
 alias C="LC_ALL=C"
-alias cat="cat -v"
 
 # Vars
 export EDITOR="emacs -nw"
