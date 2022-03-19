@@ -155,7 +155,8 @@ ispell-extra-args '("--sug-mode=ultra"))
 
 (setq package-selected-packages '(evil badwolf-theme elcord telephone-line magit flyspell lsp-mode yasnippet
                                   lsp-treemacs projectile hydra flycheck company avy which-key dap-mode lsp-ui
-                                  all-the-icons cmake-mode evil-commentary undo-tree evil-terminal-cursor-changer))
+                                  all-the-icons cmake-mode evil-commentary undo-tree evil-terminal-cursor-changer
+                                  markdown-preview-mode))
 
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
@@ -236,3 +237,5 @@ ispell-extra-args '("--sug-mode=ultra"))
 (setq undo-tree-auto-save-history t)
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 (setq undo-tree-visualizer-timestamps t)
+
+(setq markdown-preview-stylesheets (list "http://thomasf.github.io/solarized-css/solarized-light.min.css"))
