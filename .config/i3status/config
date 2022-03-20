@@ -15,6 +15,8 @@ order += "ipv6"
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "disk /"
+order += "disk /home"
+order += "disk /media/data"
 order += "memory"
 order += "load"
 order += "tztime local"
@@ -36,6 +38,12 @@ battery all {
 disk "/" {
         format = "%avail/%total"
 }
+disk "/home" {
+        format = "%avail/%total"
+}
+disk "/media/data" {
+        format = "%avail/%total"
+}
 
 load {
         format = "%1min"
@@ -44,7 +52,7 @@ load {
 memory {
         format = "%used/%available"
         threshold_degraded = "10G"
-        threshold_critical = "1G"
+        threshold_critical = "5G"
         format_degraded = "MEMORY < %available"
 }
 
