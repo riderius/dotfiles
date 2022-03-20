@@ -183,6 +183,7 @@ run-cpp() {
     rm output.out
 }
 
+# Auto-enabling ssh-agent
 pidof  ssh-agent >/dev/null
 if [[ $? -ne 0 ]] ; then
     eval "$(ssh-agent -s)" >/dev/null
