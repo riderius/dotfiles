@@ -191,3 +191,17 @@ else
     killall ssh-agent
     eval "$(ssh-agent -s)" >/dev/null
 fi
+
+# swallow from https://github.com/alexpaniman/dotfiles/blob/master/.zshrc
+swallow() {
+    # get terminal window id
+    wid=$(xdo id)
+
+    # hide terminal
+    xdo hide "$wid"
+
+    "$@" # run program
+
+    # show terminal again
+    xdo show "$wid"
+}
