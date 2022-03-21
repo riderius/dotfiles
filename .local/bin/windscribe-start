@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo systemctl start windscribe
+sleep 1
+windscribe connect $1

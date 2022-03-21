@@ -1,0 +1,3 @@
+#!/bin/bash
+windscribe disconnect
+sudo systemctl stop windscribe
