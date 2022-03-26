@@ -37,6 +37,9 @@
 (setq auto-save-default        nil)
 (setq auto-save-list-file-name nil)
 
+;; Layout for russian language
+(setq default-input-method "russian-computer")
+
 ;; IDO plugin
 (require 'ido)
 (ido-mode                      t)
