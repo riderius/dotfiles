@@ -1,61 +1,55 @@
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
 [user]
-	name = RIDERIUS
-	email = riderius.help@gmail.com
-	signingkey = 85523FCB002DAF83
+    name = RIDERIUS
+    email = riderius.help@gmail.com
+    signingkey = 85523FCB002DAF83
 [core]
-	quotepath = false
-	hooksPath = /home/riderius/.config/gitfiles/hooks
-    pager = delta
+    quotepath = false
+    hooksPath = /home/riderius/.config/gitfiles/hooks
 [gui]
-	encoding = utf-8
+    encoding = utf-8
 [gpg]
-	program = gpg
+    program = gpg
 [commit]
-	gpgsign = true
+    gpgsign = true
 [init]
-	defaultBranch = "main"
+    defaultBranch = "main"
 [alias]
-	ci = commit -s
-	s = status
+    ci = commit -s
+    s = status
     lll = log --oneline
     l = log --pretty=fuller --stat --graph
     ll = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short --graph 
-	dev = checkout dev
-	main = checkout main
-	master = checkout master
-	develop = checkout develop
-	c = checkout
-	new = checkout -b
-	b = branch
-	d = diff
-	patch = format-patch
-	p = push --verbose
-	pt = push --tags --verbose
-	pf = push --force --verbose
-	ptf = push --tags --force --verbose
-	pp = pull --verbose
-	ppt = pull --tags --verbose
-	pptf = pull --tags --force --verbose
-	ppf = pull --force --verbose
-	a = add *
+    dev = checkout dev
+    main = checkout main
+    master = checkout master
+    develop = checkout develop
+    c = checkout
+    new = checkout -b
+    b = branch
+    d = diff
+    patch = format-patch
+    p = push --verbose
+    pt = push --tags --verbose
+    pf = push --force --verbose
+    ptf = push --tags --force --verbose
+    pp = pull --verbose
+    ppt = pull --tags --verbose
+    pptf = pull --tags --force --verbose
+    ppf = pull --force --verbose
+    a = add *
 [credential]
-	helper = cache
+    helper = cache
 [sendemail]
     smtpserver = smtp.gmail.com
     smtpuser = riderius.help@gmail.com
     smtpencryption = tls
     smtpserverport = 587
-[interactive]
-    diffFilter = delta --color-only
-[delta]
-    navigate = true  # use n and N to move between diff sections
-    line-numbers = true
 [merge]
-    conflictstyle = diff3
+	conflictstyle = diff3
 [diff]
-    colorMoved = default
+	external = difft
