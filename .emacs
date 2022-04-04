@@ -1,4 +1,4 @@
-;  Include plugins from ~/.emacs.d/lisp
+; Include plugins from ~/.emacs.d/lisp
 (add-to-list 'load-path "~/.emacs.d/lisp")
 ;; Inhibit startup/splash screen
 (setq inhibit-splash-screen   t)
@@ -159,7 +159,7 @@ ispell-extra-args '("--sug-mode=ultra"))
 (setq package-selected-packages '(evil badwolf-theme elcord telephone-line magit flyspell lsp-mode yasnippet
                                   lsp-treemacs projectile hydra flycheck company avy which-key dap-mode lsp-ui
                                   all-the-icons cmake-mode evil-commentary undo-tree evil-terminal-cursor-changer
-                                  markdown-preview-mode))
+                                  markdown-preview-mode magit-todos))
 
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
@@ -242,3 +242,10 @@ ispell-extra-args '("--sug-mode=ultra"))
 (setq undo-tree-visualizer-timestamps t)
 
 (setq markdown-preview-stylesheets (list "http://thomasf.github.io/solarized-css/solarized-light.min.css"))
+
+(require 'magit-todos) ; https://github.com/alphapapa/magit-todos
+(add-hook 'find-file-hook 'magit-todos-mode)
+(require 'hl-todo) ; https://github.com/tarsius/hl-todo
+(add-hook 'find-file-hook 'hl-todo-mode)
+(require 'undo-hl) ; https://github.com/casouri/undo-hl
+(add-hook 'find-file-hook 'undo-hl-mode)
