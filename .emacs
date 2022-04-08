@@ -132,7 +132,6 @@ ispell-extra-args '("--sug-mode=ultra"))
 
 ;;Electric-modes settings
 (electric-pair-mode    1)
-(electric-indent-mode -1)
 
 ;; Indent settings
 (setq-default indent-tabs-mode nil)
@@ -207,7 +206,6 @@ ispell-extra-args '("--sug-mode=ultra"))
         (evil   . (telephone-line-airline-position-segment))))
 
 (require 'git-commit)
-
 (which-key-mode)
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
