@@ -1,0 +1,3 @@
+[submodule ".emacs.d/lisp/undo-hl"]
+	path = .emacs.d/lisp/undo-hl
+	url = https://github.com/casouri/undo-hl.git
