@@ -205,3 +205,6 @@ swallow() {
     # show terminal again
     xdo show "$wid"
 }
+
+# cod -- https://github.com/dim-an/cod
+source <(cod init $$ zsh)
