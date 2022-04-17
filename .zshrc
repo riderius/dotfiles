@@ -147,7 +147,7 @@ function _pip_completion {
 compctl -K _pip_completion pip
 # pip zsh completion end
 
-# From https://github.com/alexpaniman/dotfiles/blob/master/.zshrc
+# From https://github.com/alexpaniman/dotfiles/blob/6dd2efb07741d79983fa7ec561a45b2a9f275f80/.zshrc#L75
 run-cpp() {
     echo "------- COMPILER -------"
     echo "g++ ... -O2 $1 -o output.out"
@@ -192,7 +192,7 @@ else
     eval "$(ssh-agent -s)" >/dev/null
 fi
 
-# swallow from https://github.com/alexpaniman/dotfiles/blob/master/.zshrc
+# swallow from https://github.com/alexpaniman/dotfiles/blob/6dd2efb07741d79983fa7ec561a45b2a9f275f80/.zshrc#L112
 swallow() {
     # get terminal window id
     wid=$(xdo id)
