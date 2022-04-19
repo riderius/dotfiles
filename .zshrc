@@ -116,8 +116,8 @@ compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=20000
-SAVEHIST=20000
+HISTSIZE=1000
+SAVEHIST=1000
 # End of lines configured by zsh-newuser-install
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
