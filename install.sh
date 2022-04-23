@@ -1,6 +1,20 @@
 PWD=$(pwd)
 HOME="$HOME"
 
+# install dependencies
+if VERB="$( which pacman )" 2> /dev/null; then
+    echo "Arch-based system"
+    sudo pacman -Syu --needed base-devel git zsh zsh-syntax-highlighting fish emacs openssh 
+    mkdir -p /tmp/yay
+    cd /tmp
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -s -r -i
+    yay -S cod-git
+else
+    echo "Unknown package manager, you need install: git, zsh(zsh-syntax-highlighting(https://github.com/zsh-users/zsh-syntax-highlighting)), emacs, openssh, cod"
+fi
+
 # zsh configuration
 ZSH="$HOME/.oh-my-zsh/"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
