@@ -4,7 +4,7 @@ HOME="$HOME"
 # install dependencies
 if VERB="$( which pacman )" 2> /dev/null; then
     echo "Arch-based system"
-    sudo pacman -Syu --needed base-devel zsh zsh-syntax-highlighting fish emacs openssh clang texlab python
+    sudo pacman -Syu --needed base-devel zsh zsh-syntax-highlighting fish emacs openssh clang texlab python python-pip
     mkdir -p /tmp/yay
     cd /tmp
     git clone https://aur.archlinux.org/yay.git
