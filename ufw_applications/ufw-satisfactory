@@ -1,0 +1,9 @@
+[satisfactory]
+title=satisfactory
+description=Satisfactory client
+ports=5222,6666,7777:7827/udp
+
+[satisfactory-server]
+title=satisfactory
+description=Satisfactory server
+ports=7777/udp|15000/udp|15777/udp
