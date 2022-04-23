@@ -1,5 +1,5 @@
 PWD=$(pwd)
-HOME="$HOME/temp"
+HOME="$HOME"
 
 # zsh configuration
 ZSH="$HOME/.oh-my-zsh/"
