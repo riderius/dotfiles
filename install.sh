@@ -4,15 +4,16 @@ HOME="$HOME"
 # install dependencies
 if VERB="$( which pacman )" 2> /dev/null; then
     echo "Arch-based system"
-    sudo pacman -Syu --needed base-devel zsh zsh-syntax-highlighting fish emacs openssh
+    sudo pacman -Syu --needed base-devel zsh zsh-syntax-highlighting fish emacs openssh clang texlab python
     mkdir -p /tmp/yay
     cd /tmp
     git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -s -r -i
     yay -S cod-git
+    pip install python-lsp-server
 else
-    echo "Unknown package manager, you need install: zsh(zsh-syntax-highlighting(https://github.com/zsh-users/zsh-syntax-highlighting)), emacs, openssh, cod"
+    echo "Unknown package manager, you need install: zsh(zsh-syntax-highlighting(https://github.com/zsh-users/zsh-syntax-highlighting)), emacs, openssh, cod, clangd, texlab, python-lsp-server"
 fi
 
 # zsh configuration
