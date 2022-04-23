@@ -7,7 +7,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 rm $HOME/.zshrc
 ln -s $PWD/.zshrc $HOME/.zshrc
-ln -s $PWD/p10k.zsh $HOME/p10k.zsh
+ln -s $PWD/.p10k.zsh $HOME/.p10k.zsh
 
 # vim-like progs configuration
 ln -s $PWD/.vimrc $HOME/.vimrc
