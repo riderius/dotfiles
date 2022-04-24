@@ -4,7 +4,7 @@ HOME="$HOME"
 # install dependencies
 git submodule update --init
 if VERB="$( which pacman )" 2> /dev/null; then
-    sudo pacman -Syu --needed base-devel zsh zsh-syntax-highlighting fish emacs openssh clang texlab python python-pip
+    sudo pacman -Syu --needed base-devel zsh zsh-syntax-highlighting fish emacs vim neovim openssh clang texlab python python-pip
     git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -s -r -i
@@ -13,7 +13,7 @@ if VERB="$( which pacman )" 2> /dev/null; then
     rm yay -rf
     pip install python-lsp-server[all]
 else
-    echo "Unknown package manager, you need install: zsh(zsh-syntax-highlighting(https://github.com/zsh-users/zsh-syntax-highlighting)), emacs, openssh, cod, clangd, texlab, python-lsp-server"
+    echo "Unknown package manager, you need install: zsh(zsh-syntax-highlighting(https://github.com/zsh-users/zsh-syntax-highlighting)), emacs, vim, neovim, openssh, cod, clangd, texlab, python-lsp-server"
 fi
 
 # zsh configuration
@@ -27,6 +27,8 @@ ln -s $PWD/.p10k.zsh $HOME/.p10k.zsh
 
 # vim-like progs configuration
 ln -s $PWD/.vimrc $HOME/.vimrc
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mkdir -p $HOME/.config/nvim
 ln -s $PWD/.config/nvim/init.vim $HOME/nvim/init.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \

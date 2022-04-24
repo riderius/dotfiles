@@ -2,7 +2,3 @@
 	path = .emacs.d/lisp/undo-hl
 	url = https://github.com/casouri/undo-hl.git
 	branch = master
-[submodule ".vim/autoload/vim-plug"]
-	path = .vim/autoload/vim-plug
-	url = https://github.com/junegunn/vim-plug.git
-	branch = master
