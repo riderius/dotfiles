@@ -58,9 +58,6 @@ Plug 'ellisonleao/glow.nvim'
 let g:glow_border = "rounded"
 Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
-Plug 'mhinz/vim-startify'
-let g:startify_bookmarks = ['~/.config/nvim/init.vim']
-let g:startify_custom_header = ""
 Plug 'andweeb/presence.nvim'
 " General options
 let g:presence_auto_update         = 1
