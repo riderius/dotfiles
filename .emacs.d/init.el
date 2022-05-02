@@ -158,11 +158,11 @@ ispell-extra-args '("--sug-mode=ultra"))
 (setq package-selected-packages '(evil badwolf-theme elcord telephone-line magit flyspell lsp-mode yasnippet
                                   lsp-treemacs projectile hydra flycheck company avy which-key dap-mode lsp-ui
                                   all-the-icons cmake-mode evil-commentary undo-tree evil-terminal-cursor-changer
-                                  markdown-preview-mode magit-todos rainbow-delimiters))
+                                  markdown-preview-mode magit-todos rainbow-delimiters aggressive-indent))
 
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
-  (package-refresh-contents)
-  (mapc #'package-install package-selected-packages))
+    (package-refresh-contents)
+    (mapc #'package-install package-selected-packages))
 
 (unless (display-graphic-p)
       (require 'evil-terminal-cursor-changer)
@@ -248,3 +248,6 @@ ispell-extra-args '("--sug-mode=ultra"))
 (require 'undo-hl) ; https://github.com/casouri/undo-hl
 (add-hook 'find-file-hook 'undo-hl-mode)
 (add-hook 'find-file-hook 'rainbow-delimiters-mode)
+
+;; https://github.com/Malabarba/aggressive-indent-mode
+(global-aggressive-indent-mode 1)
