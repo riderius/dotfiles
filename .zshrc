@@ -184,13 +184,7 @@ run-cpp() {
 }
 
 # Auto-enabling ssh-agent
-pidof  ssh-agent >/dev/null
-if [[ $? -ne 0 ]] ; then
-    eval "$(ssh-agent -s)" >/dev/null
-else
-    killall ssh-agent
-    eval "$(ssh-agent -s)" >/dev/null
-fi
+eval "$(ssh-agent -s)" >/dev/null
 
 # swallow from https://github.com/alexpaniman/dotfiles/blob/6dd2efb07741d79983fa7ec561a45b2a9f275f80/.zshrc#L112
 swallow() {
