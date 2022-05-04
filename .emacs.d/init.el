@@ -53,7 +53,7 @@
 (line-number-mode   t)
 (global-linum-mode  t)
 (column-number-mode t)
-(setq linum-format " %d")
+(setq linum-format "%4d ")
 
 ;; Highlight search resaults
 (setq search-highlight        t)
@@ -248,3 +248,6 @@ ispell-extra-args '("--sug-mode=ultra"))
 (require 'undo-hl) ; https://github.com/casouri/undo-hl
 (add-hook 'find-file-hook 'undo-hl-mode)
 (add-hook 'find-file-hook 'rainbow-delimiters-mode)
+
+;; http://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/display-fill-column-indicator.el
+(global-display-fill-column-indicator-mode)
