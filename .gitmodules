@@ -2,3 +2,6 @@
 	path = .emacs.d/lisp/undo-hl
 	url = https://github.com/casouri/undo-hl.git
 	branch = master
+[submodule ".emacs.d/lisp/hare-mode"]
+	path = .emacs.d/lisp/hare-mode
+	url = git@git.sr.ht:~bbuccianti/hare-mode

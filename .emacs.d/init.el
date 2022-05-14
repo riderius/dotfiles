@@ -251,3 +251,4 @@ ispell-extra-args '("--sug-mode=ultra"))
 
 ;; http://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/display-fill-column-indicator.el
 (global-display-fill-column-indicator-mode)
+(require 'hare-mode)
