@@ -176,15 +176,6 @@ run-cpp() {
     rm output.out
 }
 
-# Auto-enabling ssh-agent
-pidof  ssh-agent >/dev/null
-if [[ $? -ne 0 ]] ; then
-    eval "$(ssh-agent -s)" >/dev/null
-else
-    killall ssh-agent
-    eval "$(ssh-agent -s)" >/dev/null
-fi
-
 # swallow from https://github.com/alexpaniman/dotfiles/blob/6dd2efb07741d79983fa7ec561a45b2a9f275f80/.zshrc#L112
 swallow() {
     # get terminal window id
@@ -225,7 +216,7 @@ function sshagent_testsocket {
             rm -f $SSH_AUTH_SOCK
             return 4
         else
-            echo "Found ssh-agent $SSH_AUTH_SOCK"
+            #echo "Found ssh-agent $SSH_AUTH_SOCK"
             return 0
         fi
     else
@@ -256,7 +247,7 @@ function sshagent_init {
     # If at this point we still haven't located an agent, it's time to
     # start a new one
     if [ $AGENTFOUND = 0 ] ; then
-        eval `ssh-agent`
+        eval `ssh-agent -t 900`
     fi
 
     # Clean up
@@ -264,7 +255,7 @@ function sshagent_init {
     unset agentsocket
 
     # Finally, show what keys are currently in the agent
-    ssh-add -l
+    #ssh-add -l
 }
 
 # Aliases
@@ -278,3 +269,6 @@ export EDITOR="emacs -nw"
 
 # cod -- https://github.com/dim-an/cod
 source <(cod init $$ zsh)
+
+# Enable ssh-agent
+sagent
