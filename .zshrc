@@ -265,7 +265,8 @@ alias makepkg="makepkg --config ~/.config/pacman/makepkg.conf"
 alias sagent="sshagent_init"
 
 # Vars
-export EDITOR="emacs -nw"
+# export EDITOR="emacs -nw"
+export EDITOR="nvim"
 
 # cod -- https://github.com/dim-an/cod
 source <(cod init $$ zsh)
