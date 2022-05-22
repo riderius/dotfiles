@@ -59,6 +59,9 @@ Plug 'ellisonleao/glow.nvim'
 let g:glow_border = "rounded"
 Plug 'andweeb/presence.nvim'
 Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
+Plug 'mhinz/vim-signify'
+set updatetime=100
+nnoremap <F7> :SignifyToggle<CR>
 
 " Graphic plugins
 Plug 'vim-airline/vim-airline'
@@ -123,6 +126,9 @@ let g:presence_plugin_manager_text = "Managing plugins"
 let g:presence_reading_text        = "Reading %s"
 let g:presence_workspace_text      = "Working on %s"
 let g:presence_line_number_text    = "Line %s out of %s"
+
+" Startup disable vim-signify
+autocmd VimEnter * :SignifyDisable
 
 " Enable highlighting of C++11 attributes
 let g:cpp_attributes_highlight = 1
