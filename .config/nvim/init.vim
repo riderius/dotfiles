@@ -75,6 +75,7 @@ Plug 'yggdroot/indentline'
 Plug 'tpope/vim-commentary'
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+Plug 'ntpeters/vim-better-whitespace'
 
 " lsp plugins
 Plug 'neovim/nvim-lspconfig' " Collection of configurations for built-in LSP client
