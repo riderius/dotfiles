@@ -247,7 +247,7 @@ function sshagent_init {
     # If at this point we still haven't located an agent, it's time to
     # start a new one
     if [ $AGENTFOUND = 0 ] ; then
-        eval `ssh-agent -t 900`
+        eval `ssh-agent -t 900` > /dev/null
     fi
 
     # Clean up
