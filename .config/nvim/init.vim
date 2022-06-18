@@ -48,7 +48,7 @@ set t_AF=^[[38;5;%dm
 syntax on
 
 " Russian spell check
-map <F2> :setlocal spell spelllang=ru_yo,en_us<CR>
+map <F2> :syntax spell toplevel<CR>:syntax on<CR>:setlocal spell spelllang=ru_yo,en_us<CR>
 map <F3> :set nospell<CR>
 
 call plug#begin('~/.config/nvim/plugins')
