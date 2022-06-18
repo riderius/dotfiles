@@ -4,4 +4,4 @@
 	branch = master
 [submodule ".emacs.d/lisp/hare-mode"]
 	path = .emacs.d/lisp/hare-mode
-	url = git@git.sr.ht:~bbuccianti/hare-mode
+	url = https://git.sr.ht/~bbuccianti/hare-mode
