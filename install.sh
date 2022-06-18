@@ -24,6 +24,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 rm $HOME/.zshrc
 ln -s $PWD/.zshrc $HOME/.zshrc
 ln -s $PWD/.p10k.zsh $HOME/.p10k.zsh
+ln -s $PWD/.dir_colors $HOME/.dir_colors
 
 # vim-like progs configuration
 ln -s $PWD/.vimrc $HOME/.vimrc
