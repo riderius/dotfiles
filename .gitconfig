@@ -23,7 +23,7 @@
     s = status
     lll = log --oneline
     l = log --pretty=fuller --stat --graph
-    ll = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short --graph 
+    ll = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short --graph
     dev = checkout dev
     main = checkout main
     master = checkout master
@@ -50,4 +50,4 @@
     smtpencryption = tls
     smtpserverport = 587
 [merge]
-	conflictstyle = diff3
+    conflictstyle = diff3
