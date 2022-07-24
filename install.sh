@@ -15,7 +15,7 @@ if VERB="$( which pacman )" 2> /dev/null; then
     rm yay -rf
     pip install python-lsp-server[all]
 else
-    echo "Unknown package manager, you need install: zsh(zsh-syntax-highlighting(https://github.com/zsh-users/zsh-syntax-highlighting)), fish, fzf, emacs, vim, neovim, openssh, cod, clangd, texlab, python-lsp-server"
+    echo "Unknown package manager, you need install: zsh(zsh-syntax-highlighting(https://github.com/zsh-users/zsh-syntax-highlighting), zsh-autosuggestions), pkgfile, fish, fzf, emacs, vim, neovim, openssh, cod, clangd, texlab, python-lsp-server, alacritty"
 fi
 
 # zsh configuration
@@ -64,3 +64,7 @@ ln -s $PWD/.config/fish/config.fish $HOME/.config/fish/config/fish
 ln -s $PWD/.config/fish/functions $HOME/.config/fish/functions
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 fish -c 'omf install https://github.com/PatrickF1/fzf.fish'
+
+# Alacritty configuration
+mkdir -p $HOME/.config/alacritty
+ln -s $PWD/.config/alacritty/alacritty.yml $HOME/.config/alacritty/alacritty.yml
