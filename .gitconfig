@@ -42,6 +42,9 @@
     pptf = pull --tags --force --verbose
     ppf = pull --force --verbose
     a = add *
+    please = push --force-with-lease
+    commend = commit --amend --no-edit
+    mer = merge --no-ff
 [credential]
     helper = cache
 [sendemail]
@@ -51,3 +54,5 @@
     smtpserverport = 587
 [merge]
     conflictstyle = diff3
+[pull]
+    ff = only
