@@ -4,7 +4,9 @@ HOME="$HOME"
 # install dependencies
 git submodule update --init
 if VERB="$( which pacman )" 2> /dev/null; then
-    sudo pacman -Syu --needed base-devel zsh zsh-syntax-highlighting fish fzf emacs vim neovim openssh clang texlab python python-pip
+    sudo pacman -Syu --needed base-devel zsh zsh-syntax-highlighting\
+        zsh-autosuggestions fish fzf emacs vim neovim openssh clang texlab\
+        python python-pip pkgfile alacritty
     git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -s -r -i
