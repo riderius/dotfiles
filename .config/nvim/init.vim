@@ -91,6 +91,15 @@ Plug 'RIDERIUS/vim-cpplint'
 autocmd FileType cpp nmap <buffer> <C-e> :call Cpplint()<CR>
 Plug 'preservim/tagbar'
 nmap <F6> :TagbarToggle<CR>
+
+" Competitive programming
+Plug 'nvim-lua/plenary.nvim'
+Plug 'https://git.sr.ht/~p00f/cphelper.nvim'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+Plug 'https://git.sr.ht/~willdurand/srht.vim'
 call plug#end()
 
 nnoremap <Left> :echoe "Use h"<CR>
@@ -153,6 +162,12 @@ let g:vimtex_syntax_conceal_disable = 1
 packadd termdebug
 let g:termdebug_wide=1
 tnoremap <Esc> <C-\><C-n>
+
+" Competitive programming
+let g:cphdir = '/home/riderius/src/competitive'
+let g:cpp_compile_command = 'g++ -g3 solution.cpp -o cpp.out'
+let g:c_compile_command = 'gcc -g3 solution.c -o c.out'
+
 
 lua << EOF
 -- Add additional capabilities supported by nvim-cmp
@@ -237,6 +252,6 @@ local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
 cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
 
--- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
-cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
+-- -- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
+-- cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
 EOF
