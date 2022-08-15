@@ -44,7 +44,7 @@
     a = add *
     please = push --force-with-lease
     commend = commit --amend --no-edit
-    mer = merge --no-ff
+    merge = merge --no-ff
 [credential]
     helper = cache
 [sendemail]
