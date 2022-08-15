@@ -55,7 +55,6 @@ call plug#begin('~/.config/nvim/plugins')
 
 " functional plugins
 Plug 'mbbill/undotree'
-Plug 'ellisonleao/glow.nvim'
 Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
 Plug 'mhinz/vim-signify'
 set updatetime=100
@@ -109,6 +108,7 @@ set colorcolumn=80
 colorscheme minimalist
 let g:airline_theme='minimalist'
 let g:airline_powerline_fonts = 1
+let g:airline_highlighting_cache = 1 " :AirlineRefresh will however clear the cache
 
 "undotree
 nnoremap <F5> :UndotreeToggle<CR>
@@ -230,13 +230,4 @@ cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex 
 
 -- -- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
 -- cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
-
-require('glow').setup{
-  glow_path = "/usr/bin/glow",
-  glow_install_path = "~/.local/bin", -- default path for installing glow binary if not executable is found
-  border = "rounded", -- floating window border config
-  style = "auto", -- filled automatically with your current editor background, you can override using glow json style
-  pager = false,
-  width = 100,
-}
 EOF
