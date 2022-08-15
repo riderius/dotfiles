@@ -5,17 +5,11 @@ HOME="$HOME"
 git submodule update --init
 if VERB="$( which pacman )" 2> /dev/null; then
     sudo pacman -Syu --needed base-devel zsh zsh-syntax-highlighting\
-        zsh-autosuggestions fish fzf emacs vim neovim openssh clang texlab\
-        python python-pip pkgfile alacritty
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -s -r -i
-    yay -S cod-git
-    cd ..
-    rm yay -rf
+        fish fzf emacs vim neovim openssh clang texlab\
+        python python-pip alacritty
     pip install python-lsp-server[all]
 else
-    echo "Unknown package manager, you need install: zsh(zsh-syntax-highlighting(https://github.com/zsh-users/zsh-syntax-highlighting), zsh-autosuggestions), pkgfile, fish, fzf, emacs, vim, neovim, openssh, cod, clangd, texlab, python-lsp-server, alacritty"
+    echo "Unknown package manager, you need install: zsh(zsh-syntax-highlighting(https://github.com/zsh-users/zsh-syntax-highlighting)), fish, fzf, emacs, vim, neovim, openssh, clangd, texlab, python-lsp-server, alacritty"
 fi
 
 # zsh configuration
