@@ -155,7 +155,7 @@ ispell-extra-args '("--sug-mode=ultra"))
              (cons "nongnu" (format "http%s://elpa.nongnu.org/nongnu/"
                                     (if (gnutls-available-p) "s" ""))))
 
-(setq package-selected-packages '(evil badwolf-theme elcord telephone-line magit flyspell lsp-mode yasnippet
+(setq package-selected-packages '(evil badwolf-theme telephone-line magit flyspell lsp-mode yasnippet
                                   lsp-treemacs projectile hydra flycheck company avy which-key dap-mode lsp-ui
                                   all-the-icons cmake-mode evil-commentary undo-tree evil-terminal-cursor-changer
                                   markdown-preview-mode magit-todos rainbow-delimiters))
@@ -184,11 +184,6 @@ ispell-extra-args '("--sug-mode=ultra"))
 
 ;color theme https://github.com/bkruczyk/badwolf-emacs
 (load-theme 'badwolf t)
-
-;;Discord presense
-(require 'elcord)
-(elcord-mode)
-(setq elcord-quiet t)
 
 ;; Change Powerline
 (require 'telephone-line)
