@@ -44,7 +44,7 @@
     a = add *
     please = push --force-with-lease
     commend = commit --amend --no-edit
-    mer = merge --no-ff
+    merge = merge --no-ff
 [credential]
     helper = cache
 [sendemail]
@@ -54,5 +54,6 @@
     smtpserverport = 587
 [merge]
     conflictstyle = diff3
+    log = 1000
 [pull]
     ff = only
