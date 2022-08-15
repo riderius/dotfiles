@@ -123,8 +123,6 @@ SAVEHIST=1000
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Command not found
-source /usr/share/doc/pkgfile/command-not-found.zsh
 # https://github.com/zsh-users/zsh-autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -267,9 +265,8 @@ alias sagent="sshagent_init"
 # Vars
 # export EDITOR="emacs -nw"
 export EDITOR="nvim"
-
-# cod -- https://github.com/dim-an/cod
-source <(cod init $$ zsh)
+export GPG_TTY=$TTY
+export LESSOPEN='| LESSQUIET=1 lesspipe.sh %s'
 
 # Enable ssh-agent
 sagent

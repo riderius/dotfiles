@@ -13,7 +13,7 @@ set fileencoding=utf-8
 set nocp
 
 set background=dark
-set termguicolors
+" set termguicolors
 
 "set mouse=a "enable mouse
 
@@ -25,10 +25,6 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'vim-airline/vim-airline'
-Plug 'ryanoasis/vim-devicons'
-
-let g:airline_powerline_fonts = 1
-let g:Powerline_symbols='unicode'
 
 Plug 'scrooloose/syntastic'
 
