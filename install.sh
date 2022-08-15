@@ -52,7 +52,6 @@ ln -s $PWD/.ssh $HOME/.ssh
 ln -s $PWD/.local/bin/restart-nm $HOME/.local/bin/restart-nm
 ln -s $PWD/.local/bin/windscribe-start $HOME/.local/bin/windscribe-start
 ln -s $PWD/.local/bin/windscribe-stop $HOME/.local/bin/windscribe-stop
-ln -s $PWD/.local/bin/ydstatus $HOME/.local/bin/ydstatus
 
 # i3 configuration
 ln -s $PWD/.config/i3 $HOME/.config/i3
