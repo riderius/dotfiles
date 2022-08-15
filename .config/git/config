@@ -9,7 +9,7 @@
     signingkey = 85523FCB002DAF83
 [core]
     quotepath = false
-    hooksPath = /home/riderius/.config/gitfiles/hooks
+    hooksPath = ~/.config/git/hooks
 [gui]
     encoding = utf-8
 [gpg]
@@ -44,7 +44,10 @@
     a = add *
     please = push --force-with-lease
     commend = commit --amend --no-edit
-    merge = merge --no-ff
+    merge = merge --no-ff --verify-signatures -S
+# From https://git.sr.ht/~sircmpwn/dotfiles/tree/master/item/.config/git/config#L16
+    fuckit = reset --hard
+    tag = tag -a
 [credential]
     helper = cache
 [sendemail]
@@ -57,3 +60,5 @@
     log = 1000
 [pull]
     ff = only
+[commit]
+    verbose = yes
