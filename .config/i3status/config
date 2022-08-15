@@ -14,11 +14,11 @@ general {
 order += "ipv6"
 order += "wireless _first_"
 order += "ethernet _first_"
+order += "battery all"
 order += "disk /"
-order += "disk /home"
-order += "disk /media/data"
-order += "memory"
 order += "load"
+order += "cpu_temperature 0"
+order += "memory"
 order += "tztime local"
 
 wireless _first_ {
@@ -36,13 +36,7 @@ battery all {
 }
 
 disk "/" {
-        format = "%avail/%total"
-}
-disk "/home" {
-        format = "%avail/%total"
-}
-disk "/media/data" {
-        format = "%avail/%total"
+        format = "%avail"
 }
 
 load {
@@ -50,12 +44,18 @@ load {
 }
 
 memory {
-        format = "%used/%available"
-        threshold_degraded = "10G"
-        threshold_critical = "5G"
+        format = "%used | %available"
+        threshold_degraded = "800M"
         format_degraded = "MEMORY < %available"
 }
 
 tztime local {
-        format = "%d.%m.%Y %H:%M:%S"
+        format = "%Y-%m-%d %H:%M:%S"
+}
+
+cpu_temperature 0 {
+    format = "T: %degrees °C"
+    max_threshold = "95"
+    format_above_threshold = "T: %degrees °C"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp2_input"
 }
