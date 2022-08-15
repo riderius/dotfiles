@@ -22,7 +22,7 @@
     ci = commit -s
     s = status
     lll = log --oneline
-    l = log --pretty=fuller --stat --graph
+    l = log --pretty=fuller --stat --graph --show-signature
     ll = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short --graph
     dev = checkout dev
     main = checkout main
