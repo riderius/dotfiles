@@ -56,7 +56,6 @@ call plug#begin('~/.config/nvim/plugins')
 " functional plugins
 Plug 'mbbill/undotree'
 Plug 'ellisonleao/glow.nvim'
-let g:glow_border = "rounded"
 Plug 'andweeb/presence.nvim'
 Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
 Plug 'mhinz/vim-signify'
@@ -76,6 +75,7 @@ Plug 'tpope/vim-commentary'
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'sotte/presenting.vim'
 
 " lsp plugins
 Plug 'neovim/nvim-lspconfig' " Collection of configurations for built-in LSP client
@@ -254,4 +254,13 @@ cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex 
 
 -- -- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
 -- cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
+
+require('glow').setup{
+  glow_path = "/usr/bin/glow",
+  glow_install_path = "~/.local/bin", -- default path for installing glow binary if not executable is found
+  border = "rounded", -- floating window border config
+  style = "auto", -- filled automatically with your current editor background, you can override using glow json style
+  pager = false,
+  width = 100,
+}
 EOF
