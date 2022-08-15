@@ -38,8 +38,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # git configuration
-ln -s $PWD/.gitconfig $HOME/.gitconfig
-ln -s $PWD/.config/gitfiles $HOME/.config/gitfiles
+ln -s $PWD/.config/git $HOME/.config/git
 
 # emacs configuration
 mkdir $HOME/.emacs.d
