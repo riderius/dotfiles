@@ -54,5 +54,6 @@
     smtpserverport = 587
 [merge]
     conflictstyle = diff3
+    log = 1000
 [pull]
     ff = only
