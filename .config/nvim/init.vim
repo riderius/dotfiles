@@ -76,6 +76,8 @@ Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sotte/presenting.vim'
+Plug 'jamessan/vim-gnupg'
+let g:GPGDefaultRecipients = ["9D671DC2087EBDFFA9DF07B898A6AC90A406F6E5"]
 
 " lsp plugins
 Plug 'neovim/nvim-lspconfig' " Collection of configurations for built-in LSP client
