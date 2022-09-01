@@ -44,6 +44,7 @@ set termguicolors
 set t_Co=256
 set t_AB=^[[48;5;%dm
 set t_AF=^[[38;5;%dm
+set cursorline
 
 syntax on
 
@@ -54,7 +55,6 @@ map <F3> :set nospell<CR>
 call plug#begin('~/.config/nvim/plugins')
 
 " functional plugins
-Plug 'mbbill/undotree'
 Plug 'ellisonleao/glow.nvim'
 Plug 'andweeb/presence.nvim'
 Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
@@ -69,7 +69,7 @@ let g:airline_powerline_fonts = 1
 let g:Powerline_symbols='unicode'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'dikiaap/minimalist'
-Plug 'powerman/vim-plugin-ruscmd'
+Plug 'riderius/vim-plugin-ruscmd'
 Plug 'yggdroot/indentline'
 Plug 'tpope/vim-commentary'
 Plug 'luochen1990/rainbow'

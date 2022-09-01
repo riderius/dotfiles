@@ -45,8 +45,7 @@
     please = push --force-with-lease
     commend = commit --amend --no-edit
     merge = merge --no-ff --verify-signatures -S
-# From https://git.sr.ht/~sircmpwn/dotfiles/tree/master/item/.config/git/config#L16
-    fuckit = reset --hard
+    fuckit = reset --hard # From https://git.sr.ht/~sircmpwn/dotfiles/tree/master/item/.config/git/config#L16
     tag = tag -a
 [credential]
     helper = cache
