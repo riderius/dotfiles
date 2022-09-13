@@ -166,10 +166,9 @@ let g:termdebug_wide=1
 tnoremap <Esc> <C-\><C-n>
 
 " Competitive programming
-let g:cphdir = '/home/riderius/src/competitive'
-let g:cpp_compile_command = 'g++ -g3 solution.cpp -o cpp.out'
-let g:c_compile_command = 'gcc -g3 solution.c -o c.out'
-
+let g:cph#dir = '/home/riderius/src/competitive'
+let g:cph#cpp#compile_command = 'g++ -g3 solution.cpp -o cpp.out'
+let g:cph#c#compile_command = 'gcc -g3 solution.c -o c.out'
 
 lua << EOF
 -- Add additional capabilities supported by nvim-cmp
