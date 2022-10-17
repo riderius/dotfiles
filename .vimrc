@@ -6,11 +6,11 @@ set expandtab
 set hlsearch
 set incsearch
 set write
-set undofile
 
 set encoding=utf-8
 set fileencoding=utf-8
 set nocp
+set undofile
 
 set background=dark
 " set termguicolors
@@ -23,9 +23,8 @@ call plug#begin('~/.vim/plugins')
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'jiangmiao/auto-pairs'
-Plug 'mbbill/undotree'
 Plug 'vim-airline/vim-airline'
-
+Plug 'riderius/vim-plugin-ruscmd'
 Plug 'scrooloose/syntastic'
 
 set statusline+=%#warningmsg#
