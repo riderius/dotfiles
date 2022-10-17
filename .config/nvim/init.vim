@@ -45,6 +45,7 @@ set t_Co=256
 set t_AB=^[[48;5;%dm
 set t_AF=^[[38;5;%dm
 set cursorline
+set mouse=
 
 syntax on
 
@@ -167,13 +168,13 @@ tnoremap <Esc> <C-\><C-n>
 
 " Competitive programming
 let g:cph#dir = '/home/riderius/src/competitive'
-let g:cph#cpp#compile_command = 'g++ -g3 solution.cpp -o cpp.out'
-let g:cph#c#compile_command = 'gcc -g3 solution.c -o c.out'
+let g:cph#cpp#compile_command = 'g++ -g solution.cpp -o cpp.out'
+let g:cph#c#compile_command = 'gcc -g solution.c -o c.out'
 
 lua << EOF
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 
