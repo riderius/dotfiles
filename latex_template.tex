@@ -12,9 +12,21 @@
 \usepackage{wrapfig}
 \usepackage{longtable}
 \usepackage{tabularx}
+% From https://tex.stackexchange.com/questions/211386/use-letters-and-numbers-in-numerate-simultaneously
+\usepackage{enumitem}
+\AddEnumerateCounter{\asbuk}{\russian@alph}{щ}
+\usepackage{fancyhdr}
+\headheight=14pt
+\fancyhead{}
+\pagestyle{fancy}
+\makeatletter
 \title{Latex Template}
 \author{Riderius}
 \date{\today}
+\let\runauthor\@author
+\let\runtitle\@title
+\fancyhead[L]{\rightmark}
+\fancyhead[R]{\runtitle}
 \begin{document}
 \maketitle
 \tableofcontents
