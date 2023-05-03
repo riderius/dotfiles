@@ -14,17 +14,19 @@
 \usepackage{tabularx}
 % From https://tex.stackexchange.com/questions/211386/use-letters-and-numbers-in-numerate-simultaneously
 \usepackage{enumitem}
+%\usepackage[color=red, text={DRAFT \& COPY\\\today}]{draftwatermark} % Enable only with "draft" in optional agrs in documentclass
 \AddEnumerateCounter{\asbuk}{\russian@alph}{щ}
 \usepackage{fancyhdr}
 \headheight=14pt
 \fancyhead{}
 \pagestyle{fancy}
-\makeatletter
 \title{Latex Template}
 \author{Riderius}
 \date{\today}
+\makeatletter
 \let\runauthor\@author
 \let\runtitle\@title
+\makeatother
 \fancyhead[L]{\rightmark}
 \fancyhead[R]{\runtitle}
 \begin{document}
