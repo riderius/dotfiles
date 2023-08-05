@@ -267,6 +267,11 @@ alias sagent="sshagent_init"
 # Vars
 # export EDITOR="emacs -nw"
 export EDITOR="nvim"
+export TODAY_CMD=${TODAY_CMD:-'nvim -c "above sp $TODAY_TODO" -c "tabe $TODAY_DIR" -c "tabr" "$TODAY_FILE"'}
+export TODAY_DIR=${TODAY_DIR-${XDG_DATA_HOME:-${HOME}/.local/share}/today}
+export TODAY_SUFFIX=${TODAY_SUFFIX-.md.gpg}
+GPG_TTY=`tty`
+export GPG_TTY
 
 # cod -- https://github.com/dim-an/cod
 source <(cod init $$ zsh)

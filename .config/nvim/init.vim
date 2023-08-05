@@ -56,7 +56,7 @@ map <F3> :set nospell<CR>
 call plug#begin('~/.config/nvim/plugins')
 
 " functional plugins
-Plug 'ellisonleao/glow.nvim'
+" Plug 'ellisonleao/glow.nvim'
 Plug 'andweeb/presence.nvim'
 Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
 Plug 'mhinz/vim-signify'
@@ -117,12 +117,15 @@ colorscheme minimalist
 let g:airline_theme='minimalist'
 let g:airline_powerline_fonts = 1
 
+" highlight for nasm
+autocmd BufNew,BufRead *.asm set ft=nasm
+
 "undotree
 nnoremap <F5> :UndotreeToggle<CR>
 
 " Rich Presence general options
 let g:presence_auto_update         = 1
-let g:presence_neovim_image_text   = "My favorite IDE"
+let g:presence_neovim_image_text   = "My favorite editor"
 let g:presence_main_image          = "neovim"
 let g:presence_client_id           = "793271441293967371"
 let g:presence_log_level           = "error"
@@ -130,6 +133,8 @@ let g:presence_debounce_timeout    = 10
 let g:presence_enable_line_number  = 0
 let g:presence_blacklist           = []
 let g:presence_buttons             = 1
+let g:presence_file_assets         = {}
+let g:presence_show_time           = 1
 
 " Rich Presence text options
 let g:presence_editing_text        = "Editing %s"
@@ -257,12 +262,12 @@ cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex 
 -- -- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
 -- cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
 
-require('glow').setup{
-  glow_path = "/usr/bin/glow",
-  glow_install_path = "~/.local/bin", -- default path for installing glow binary if not executable is found
-  border = "rounded", -- floating window border config
-  style = "auto", -- filled automatically with your current editor background, you can override using glow json style
-  pager = false,
-  width = 100,
-}
+--require('glow').setup{
+--  glow_path = "/usr/bin/glow",
+--  glow_install_path = "~/.local/bin", -- default path for installing glow binary if not executable is found
+--  border = "rounded", -- floating window border config
+--  style = "auto", -- filled automatically with your current editor background, you can override using glow json style
+--  pager = false,
+--  width = 100,
+--}
 EOF
