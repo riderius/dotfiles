@@ -2,6 +2,7 @@
 \usepackage[T1, T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english, russian]{babel}
+\usepackage[protrusion=true, expansion, tracking=true, kerning=true, spacing, babel=true]{microtype}
 \usepackage{indentfirst}
 \usepackage[unicode, pdfusetitle]{hyperref}
 \pdfinfo{
@@ -14,7 +15,7 @@
 \usepackage{tabularx}
 % From https://tex.stackexchange.com/questions/211386/use-letters-and-numbers-in-numerate-simultaneously
 \usepackage{enumitem}
-%\usepackage[color=red, text={DRAFT \& COPY\\\today}]{draftwatermark} % Enable only with "draft" in optional agrs in documentclass
+% \usepackage[color=red, text={DRAFT \& COPY\\\today}]{draftwatermark} % Enable only with "draft" in optional agrs in documentclass
 \AddEnumerateCounter{\asbuk}{\russian@alph}{щ}
 \usepackage{fancyhdr}
 \headheight=14pt
