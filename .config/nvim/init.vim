@@ -57,7 +57,7 @@ call plug#begin('~/.config/nvim/plugins')
 
 " functional plugins
 " Plug 'ellisonleao/glow.nvim'
-Plug 'andweeb/presence.nvim'
+" Plug 'andweeb/presence.nvim'
 Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
 Plug 'mhinz/vim-signify'
 set updatetime=100
@@ -184,7 +184,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'pylsp', 'texlab', 'cmake' }
+local servers = { 'clangd', 'pylsp', 'texlab', 'cmake', 'rust_analyzer' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
@@ -194,6 +194,16 @@ end
 
 require'lspconfig'.clangd.setup{
     cmd = {"clangd", "--completion-style=detailed"},
+}
+
+require'lspconfig'.rust_analyzer.setup{
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = true;
+      }
+    }
+  }
 }
 
 -- luasnip setup
