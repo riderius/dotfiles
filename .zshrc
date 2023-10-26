@@ -263,11 +263,13 @@ alias emacs="emacs -nw"
 alias C="LC_ALL=C"
 alias makepkg="makepkg --config ~/.config/pacman/makepkg.conf"
 alias sagent="sshagent_init"
+alias cppman-set-cppreference="cppman -s cppreference.com"
+alias cppman-set-cplusplus="cppman -s cplusplus.com"
 
 # Vars
 # export EDITOR="emacs -nw"
 export EDITOR="nvim"
-export TODAY_CMD=${TODAY_CMD:-'nvim -c "above sp $TODAY_TODO" -c "tabe $TODAY_DIR" -c "tabr" "$TODAY_FILE"'}
+# export TODAY_CMD=${TODAY_CMD:-'nvim -c "above sp $TODAY_TODO" -c "tabe $TODAY_DIR" -c "tabr" "$TODAY_FILE"'}
 export TODAY_DIR=${TODAY_DIR-${XDG_DATA_HOME:-${HOME}/.local/share}/today}
 export TODAY_SUFFIX=${TODAY_SUFFIX-.md.gpg}
 GPG_TTY=`tty`
