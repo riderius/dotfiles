@@ -96,8 +96,8 @@ Plug 'preservim/tagbar'
 nmap <F6> :TagbarToggle<CR>
 
 " Competitive programming
-Plug 'nvim-lua/plenary.nvim'
-Plug 'https://git.sr.ht/~p00f/cphelper.nvim'
+Plug 'MunifTanjim/nui.nvim'        " it's a xeluxee/competitest.nvim dependency
+Plug 'xeluxee/competitest.nvim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -170,11 +170,6 @@ let g:vimtex_syntax_conceal_disable = 1
 packadd termdebug
 let g:termdebug_wide=1
 tnoremap <Esc> <C-\><C-n>
-
-" Competitive programming
-let g:cph#dir = '/home/riderius/src/competitive'
-let g:cph#cpp#compile_command = 'g++ -g solution.cpp -o cpp.out'
-let g:cph#c#compile_command = 'gcc -g solution.c -o c.out'
 
 lua << EOF
 -- Add additional capabilities supported by nvim-cmp
@@ -280,4 +275,20 @@ cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex 
 --  pager = false,
 --  width = 100,
 --}
+
+require('competitest').setup {
+        runner_ui = {
+            interface = "split",
+        },
+        compile_command = {
+            c = { exec = "gcc", args = { "-Wall", "-Wextra", "-g3", "$(FNAME)", "-o", "$(FNOEXT)" } },
+            cpp = { exec = "g++", args = { "-Wall", "-Wextra", "-g3", "$(FNAME)", "-o", "$(FNOEXT)" } },
+            rust = { exec = "rustc", args = { "$(FNAME)" } },
+            java = { exec = "javac", args = { "$(FNAME)" } },
+        },
+        template_file = {cpp = "~/src/git/dotfiles/competitive/template.cpp"},
+        evaluate_template_modifiers = true,
+        received_problems_path = "$(HOME)/src/competitive/$(JUDGE)/$(CONTEST)/$(PROBLEM).$(FEXT)",
+        received_contests_directory = "$(HOME)/src/competitive/$(JUDGE)/$(CONTEST)",
+}
 EOF
