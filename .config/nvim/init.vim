@@ -61,7 +61,13 @@ call plug#begin('~/.config/nvim/plugins')
 Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
 Plug 'mhinz/vim-signify'
 set updatetime=100
+autocmd VimEnter * :SignifyDisable " Startup disable vim-signify
 nnoremap <F7> :SignifyToggle<CR>
+Plug 'jghauser/mkdir.nvim'
+Plug 'sudormrfbin/cheatsheet.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Graphic plugins
 Plug 'vim-airline/vim-airline'
@@ -120,9 +126,6 @@ let g:airline_powerline_fonts = 1
 " highlight for nasm
 autocmd BufNew,BufRead *.asm set ft=nasm
 
-"undotree
-nnoremap <F5> :UndotreeToggle<CR>
-
 " Rich Presence general options
 let g:presence_auto_update         = 1
 let g:presence_neovim_image_text   = "My favorite editor"
@@ -144,9 +147,6 @@ let g:presence_plugin_manager_text = "Managing plugins"
 let g:presence_reading_text        = "Reading %s"
 let g:presence_workspace_text      = "Working on %s"
 let g:presence_line_number_text    = "Line %s out of %s"
-
-" Startup disable vim-signify
-autocmd VimEnter * :SignifyDisable
 
 " Enable highlighting of C++11 attributes
 let g:cpp_attributes_highlight = 1
@@ -219,8 +219,8 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(-4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
