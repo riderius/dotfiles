@@ -2,6 +2,8 @@
 \usepackage[T1, T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english, russian]{babel}
+\usepackage[protrusion=true, expansion, tracking=true, kerning=true, spacing, babel=true]{microtype}
+\righthyphenmin=2
 \usepackage{indentfirst}
 \usepackage[unicode, pdfusetitle]{hyperref}
 \pdfinfo{
@@ -15,16 +17,18 @@
 % From https://tex.stackexchange.com/questions/211386/use-letters-and-numbers-in-numerate-simultaneously
 \usepackage{enumitem}
 \AddEnumerateCounter{\asbuk}{\russian@alph}{щ}
+% \usepackage[color=red, text={DRAFT \& COPY\\\today}]{draftwatermark} % Enable only with "draft" in optional agrs in documentclass
 \usepackage{fancyhdr}
 \headheight=14pt
 \fancyhead{}
 \pagestyle{fancy}
-\makeatletter
 \title{Latex Template}
 \author{Riderius}
 \date{\today}
+\makeatletter
 \let\runauthor\@author
 \let\runtitle\@title
+\makeatother
 \fancyhead[L]{\rightmark}
 \fancyhead[R]{\runtitle}
 \begin{document}

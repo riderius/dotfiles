@@ -59,7 +59,13 @@ call plug#begin('~/.config/nvim/plugins')
 Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
 Plug 'mhinz/vim-signify'
 set updatetime=100
+autocmd VimEnter * :SignifyDisable " Startup disable vim-signify
 nnoremap <F7> :SignifyToggle<CR>
+Plug 'jghauser/mkdir.nvim'
+Plug 'sudormrfbin/cheatsheet.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Graphic plugins
 Plug 'vim-airline/vim-airline'
@@ -91,7 +97,6 @@ Plug 'preservim/tagbar'
 nmap <F6> :TagbarToggle<CR>
 
 " Competitive programming
-Plug 'nvim-lua/plenary.nvim'
 Plug 'https://git.sr.ht/~p00f/cphelper.nvim'
 
 " Git
@@ -113,8 +118,8 @@ let g:airline_theme='minimalist'
 let g:airline_powerline_fonts = 1
 let g:airline_highlighting_cache = 1 " :AirlineRefresh will however clear the cache
 
-"undotree
-nnoremap <F5> :UndotreeToggle<CR>
+" highlight for nasm
+autocmd BufNew,BufRead *.asm set ft=nasm
 
 " Startup disable vim-signify
 autocmd VimEnter * :SignifyDisable
@@ -155,7 +160,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'pylsp', 'texlab', 'cmake' }
+local servers = { 'clangd', 'pylsp', 'texlab', 'cmake', 'rust_analyzer' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
@@ -166,6 +171,22 @@ end
 require'lspconfig'.clangd.setup{
     cmd = {"clangd", "--completion-style=detailed"},
 }
+
+require'lspconfig'.rust_analyzer.setup{
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = true;
+      }
+    }
+  }
+}
+
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
 -- luasnip setup
 local luasnip = require 'luasnip'
@@ -179,8 +200,8 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(-4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,

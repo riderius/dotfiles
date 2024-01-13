@@ -1,0 +1,4 @@
+[QC]
+title=QC
+description=Quake champions
+ports=11700:11725/tcp|27015,27036/tcp|27015/udp|27031:27036/udp|48800:48900/udp
