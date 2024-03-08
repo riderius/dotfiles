@@ -288,7 +288,7 @@ require('competitest').setup {
         },
         compile_command = {
             c = { exec = "gcc", args = { "-Wall", "-Wextra", "-g3", "$(FNAME)", "-o", "$(FNOEXT)" } },
-            cpp = { exec = "g++", args = { "-Wall", "-Wextra", "-g3", "$(FNAME)", "-o", "$(FNOEXT)" } },
+            cpp = { exec = "g++", args = { "-Wall", "-Wextra", "-g3", "-std=c++20", "$(FNAME)", "-o", "$(FNOEXT)" } },
             rust = { exec = "rustc", args = { "$(FNAME)" } },
             java = { exec = "javac", args = { "$(FNAME)" } },
         },
