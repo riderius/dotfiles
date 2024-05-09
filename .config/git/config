@@ -9,7 +9,7 @@
     signingkey = 85523FCB002DAF83
 [core]
     quotepath = false
-    hooksPath = ~/.config/git/hooks
+    # hooksPath = ~/.config/git/hooks
     autocrlf = input
 [gui]
     encoding = utf-8

@@ -265,6 +265,8 @@ alias makepkg="makepkg --config ~/.config/pacman/makepkg.conf"
 alias sagent="sshagent_init"
 alias cppman-set-cppreference="cppman -s cppreference.com"
 alias cppman-set-cplusplus="cppman -s cplusplus.com"
+alias aurpl="aurpublish log --pretty=fuller --stat --graph --show-signature"
+
 
 # Vars
 # export EDITOR="emacs -nw"

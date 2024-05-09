@@ -96,8 +96,8 @@ Plug 'windwp/nvim-autopairs' "Autopair plugin
 Plug 'lervag/vimtex' " Latex
 
 " formats plugins
-Plug 'RIDERIUS/vim-cpplint'
-autocmd FileType cpp nmap <buffer> <C-e> :call Cpplint()<CR>
+"Plug 'RIDERIUS/vim-cpplint'
+"autocmd FileType cpp nmap <buffer> <C-e> :call Cpplint()<CR>
 Plug 'preservim/tagbar'
 nmap <F6> :TagbarToggle<CR>
 
