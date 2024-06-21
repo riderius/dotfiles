@@ -127,6 +127,7 @@ SAVEHIST=1000
 source /usr/share/doc/pkgfile/command-not-found.zsh
 # https://github.com/zsh-users/zsh-autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/doc/git-extras/git-extras-completion.zsh
 
 # pip zsh completion start
 function _pip_completion {
@@ -274,6 +275,7 @@ export EDITOR="nvim"
 # export TODAY_CMD=${TODAY_CMD:-'nvim -c "above sp $TODAY_TODO" -c "tabe $TODAY_DIR" -c "tabr" "$TODAY_FILE"'}
 export TODAY_DIR=${TODAY_DIR-${XDG_DATA_HOME:-${HOME}/.local/share}/today}
 export TODAY_SUFFIX=${TODAY_SUFFIX-.md.gpg}
+export TODAY_OPEN="gpg -dq"
 GPG_TTY=`tty`
 export GPG_TTY
 
