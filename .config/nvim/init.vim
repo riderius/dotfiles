@@ -167,7 +167,7 @@ let g:vimtex_compiler_method = 'latexmk'
 let g:vimtex_syntax_conceal_disable = 1
 
 " For gdb in nvim
-packadd termdebug
+" packadd termdebug
 let g:termdebug_wide=1
 tnoremap <Esc> <C-\><C-n>
 
@@ -179,7 +179,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'pylsp', 'texlab', 'cmake', 'rust_analyzer' }
+local servers = { 'clangd', 'pylsp', 'texlab', 'cmake', 'rust_analyzer', 'jdtls'}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
