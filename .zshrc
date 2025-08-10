@@ -177,6 +177,35 @@ run-cpp() {
     rm output.out
 }
 
+run-java() {
+    echo "------- COMPILER -------"
+    echo "javac $1.java"
+    echo -ne "\n"
+
+    compilation_beg_time="$(date +%s%N)"
+
+    javac "$1.java" || return
+
+    compilation_end_time="$(date +%s%N)"
+
+    echo "-------- OUTPUT --------"
+    run_beg_time="$(date +%s%N)"
+    java $1
+    run_end_time="$(date +%s%N)"
+    echo -ne "\n"
+
+    compilation_time="$((($compilation_end_time - $compilation_beg_time)/1000000))"
+    run_time="$((($run_end_time - $run_beg_time)/1000000))"
+
+    number_length="$((${#compilation_time} > ${#run_time} ? ${#compilation_time} : ${#run_time}))"
+
+    echo "-------- STATUS --------"
+    printf "Compilation time: %*sms\n" "$number_length" "$compilation_time"
+    printf "Execution   time: %*sms\n" "$number_length" "$run_time"
+
+    rm $1.class
+}
+
 # swallow from https://github.com/alexpaniman/dotfiles/blob/6dd2efb07741d79983fa7ec561a45b2a9f275f80/.zshrc#L112
 swallow() {
     # get terminal window id
