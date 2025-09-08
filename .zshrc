@@ -125,6 +125,7 @@ SAVEHIST=1000
 
 # https://github.com/zsh-users/zsh-autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/doc/git-extras/git-extras-completion.zsh
 
 # pip zsh completion start
 function _pip_completion {
@@ -172,6 +173,35 @@ run-cpp() {
     printf "Execution   time: %*sms\n" "$number_length" "$run_time"
 
     rm output.out
+}
+
+run-java() {
+    echo "------- COMPILER -------"
+    echo "javac $1.java"
+    echo -ne "\n"
+
+    compilation_beg_time="$(date +%s%N)"
+
+    javac "$1.java" || return
+
+    compilation_end_time="$(date +%s%N)"
+
+    echo "-------- OUTPUT --------"
+    run_beg_time="$(date +%s%N)"
+    java $1
+    run_end_time="$(date +%s%N)"
+    echo -ne "\n"
+
+    compilation_time="$((($compilation_end_time - $compilation_beg_time)/1000000))"
+    run_time="$((($run_end_time - $run_beg_time)/1000000))"
+
+    number_length="$((${#compilation_time} > ${#run_time} ? ${#compilation_time} : ${#run_time}))"
+
+    echo "-------- STATUS --------"
+    printf "Compilation time: %*sms\n" "$number_length" "$compilation_time"
+    printf "Execution   time: %*sms\n" "$number_length" "$run_time"
+
+    rm $1.class
 }
 
 # swallow from https://github.com/alexpaniman/dotfiles/blob/6dd2efb07741d79983fa7ec561a45b2a9f275f80/.zshrc#L112
@@ -263,6 +293,8 @@ alias makepkg="makepkg --config ~/.config/pacman/makepkg.conf"
 alias sagent="sshagent_init"
 alias cppman-set-cppreference="cppman -s cppreference.com"
 alias cppman-set-cplusplus="cppman -s cplusplus.com"
+alias aurpl="aurpublish log --pretty=fuller --stat --graph --show-signature"
+
 
 # Vars
 # export EDITOR="emacs -nw"
@@ -273,6 +305,7 @@ export LESSOPEN='| LESSQUIET=1 lesspipe.sh %s'
 # export TODAY_CMD=${TODAY_CMD:-'nvim -c "above sp $TODAY_TODO" -c "tabe $TODAY_DIR" -c "tabr" "$TODAY_FILE"'}
 export TODAY_DIR=${TODAY_DIR-${XDG_DATA_HOME:-${HOME}/.local/share}/today}
 export TODAY_SUFFIX=${TODAY_SUFFIX-.md.gpg}
+export TODAY_OPEN="gpg -dq"
 GPG_TTY=`tty`
 export GPG_TTY
 

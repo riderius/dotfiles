@@ -9,7 +9,8 @@
     signingkey = 85523FCB002DAF83
 [core]
     quotepath = false
-    hooksPath = ~/.config/git/hooks
+    # hooksPath = ~/.config/git/hooks
+    autocrlf = input
 [gui]
     encoding = utf-8
 [gpg]
@@ -48,7 +49,7 @@
     fuckit = reset --hard # From https://git.sr.ht/~sircmpwn/dotfiles/tree/master/item/.config/git/config#L16
     tag = tag -a
 [credential]
-    helper = cache
+    helper = cache --timeout=3600
 [sendemail]
     smtpserver = smtp.gmail.com
     smtpuser = riderius.help@gmail.com
@@ -69,3 +70,8 @@
     cmd = difft "$LOCAL" "$REMOTE"
 [difftool "vimdiff"]
     cmd = vimdiff "$LOCAL" "$REMOTE"
+[diff "sqlite3"]
+    binary = true
+    textconv = "echo .dump | sqlite3"
+[diff "image"]
+	command = ~/.local/bin/git-imgdiff
