@@ -197,3 +197,4 @@ exec --no-startup-id dunst
 exec --no-startup-id xclip
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id pasystray
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1

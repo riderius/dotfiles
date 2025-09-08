@@ -143,7 +143,7 @@ let g:vimtex_compiler_method = 'latexmk'
 let g:vimtex_syntax_conceal_disable = 1
 
 " For gdb in nvim
-packadd termdebug
+" packadd termdebug
 let g:termdebug_wide=1
 tnoremap <Esc> <C-\><C-n>
 
